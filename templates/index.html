@@ -27,9 +27,9 @@
                 <th>Name</th>
                 <th>Year</th>
                 <th>Nationality</th>
-                <th>Death cause</th>
-                <th>Job title</th>
-                <th>Organization</th>
+                <th>Killed by</th>
+                <th>Job</th>
+                <th>Press organization</th>
                 <th>Location</th>
             </tr>
         {% for obj in object_list %}
@@ -37,8 +37,8 @@
                 <td><a href="{{ obj.id }}/">{{ obj.fullName }}</a></td>
                 <td>{{ obj.year }}</td>
                 <td>{{ obj.primaryNationality }}</td>
-                <td>{{ obj.typeOfDeath }}</td>
-                <td>{{ obj.employedAs }}</td>
+                <td>{{ obj.sourcesOfFire }}</td>
+                <td>{{ obj.jobs}}</td>
                 <td>{{ obj.organizations }}</td>
                 <td>{{ obj.city_country }}</td>
             </tr>
