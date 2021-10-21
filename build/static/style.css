@@ -126,13 +126,14 @@ a:hover {
 }
 
 .footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #444444;
-  color: #EFEFEF;
-  text-align: center;
-  padding-bottom: 0px;
+    display: none;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #444444;
+    color: #EFEFEF;
+    text-align: center;
+    padding-bottom: 0px;
 
 }
 
