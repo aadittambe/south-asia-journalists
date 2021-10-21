@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Washiqur Rahman Babu</h2>
         <h4><strong>Year:</strong> 2015 </h4>
         <h4><strong>Nationality:</strong> Bangladesh</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Dhaka, Bangladesh</h4>
         <h4><strong>Press organization:</strong> Freelance </h4>
-        <h4> What&apos;s Washiqur Rahman Babu&apos;s story?</h4>
+        <h4> What&apos;s <span>Washiqur Rahman Babu&apos;s</span> story?</h4>
             Three assailants attacked Rahman with a sharp weapon as he left his home to go to work in the morning, The Associated Press reported. The blogger, who was also identified in reports as Oyasiqur Rhaman, was pronounced dead upon arrival at a local hospital from injuries he sustained to his head, face, and neck, news reports said. Police were able to identify Rahman using a voter identity card they found in his possession, the reports said.Deputy Police Commissioner Biplob Kumar Sarker told Agence France-Presse that in initial interrogations the suspects said they killed Rahman “because he criticized hardline Islamists” in his writings. Rahman wrote about religion, science, and against communalism, mainly on Facebook, according to news website BDNews24. According to The Dhaka Tribune, Rahman opposed “irrational religious beliefs, superstitions, and radical Islamists” on his Facebook page. He had also written a 52-episode series for an anti-religion satirical site called Dhormockery.com, according to the London-based International Humanist and Ethical Union, reports said.Imran Sarker, head of the Blogger and Online Activists Network in Bangladesh, told AFP that Rahman used to write under the penname Kutshit Hasher Chhana (Ugly Duckling), and described him as a progressive thinker who was critical of religious fundamentalism.One of the assailants fled the scene, but the other two were immediately apprehended by bystanders. Police arrested the two men, both students at local madrasas, or theological schools, news reports said.In confessions to police, the two men said they didn’t know what a blog was, nor were they familiar with Rahman’s writing, but said they had orders to kill the blogger, reports said.Rahman had received numerous online threats including one that said “Get ready for the afterlife,” and another that said, “See you in hell,” according to reports.On July 20, 2016, a Dhaka court indicted five suspects, two of whom were not in custody, believed to be members of the banned militant group Ansarullah Bangla Team in the case, according to local news reports. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([23.7861979, 90.4026151], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([23.7861979, 90.4026151], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([23.7861979, 90.4026151]).addTo(map);
         </script>
     </body>
 </html>

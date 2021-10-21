@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Kamal Hossain</h2>
         <h4><strong>Year:</strong> 2004 </h4>
         <h4><strong>Nationality:</strong> Bangladesh</h4>
         <h4><strong>Killed by:</strong> Criminal Group</h4>
         <h4><strong>Location:</strong> Manikcchari , Bangladesh</h4>
         <h4><strong>Press organization:</strong> Ajker Kagoj </h4>
-        <h4> What&apos;s Kamal Hossain&apos;s story?</h4>
+        <h4> What&apos;s <span>Kamal Hossain&apos;s</span> story?</h4>
             Hossain, the local correspondent for the Bangla-language daily AjkerKagoj, was abducted and brutally murdered by unknown assailantsin the early morning in Manikcchari, eastern Chittagong District,according to local news reports. The newswire service the United Newsof Bangladesh (UNB) reported that police discovered Hossain’s decapitatedbody nearby hours later. According to Bangladeshi news reports, armed men broke into Hossain’shouse in the middle of the night and threatened to kill Hossain’s2-year-old son unless he surrendered to them. The men took Hossainaway at gunpoint. Hossain, 32, was the general secretary of the Manikcchari Press Cluband had recently written several articles about criminal activity,according to local journalists. The Chittagong District is notoriousfor organized crime, including the illegal trade of lumber and arms,sources told CPJ. Hossain was also involved with the local youth wingof the ruling Bangladesh Nationalist Party, the Jatiyatabadi ChhatraDal, and had recently had a dispute with a neighbor about land, Bangladeshinews outlets reported.But local journalists told CPJ they are convinced that Hossain’s murderwas related to his investigative reporting about organized crime.His wife says he had received death threats before his murder, accordingto local news reports. An article in Ajker Kagoj at the timeof his death also claimed that Hossain was likely killed because ofhis investigative work. Bangladeshi press groups condemned the killingand called for justice. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([22.8394953, 91.809886], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([22.8394953, 91.809886], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([22.8394953, 91.809886]).addTo(map);
         </script>
     </body>
 </html>

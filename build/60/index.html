@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Jamal Uddin</h2>
         <h4><strong>Year:</strong> 2012 </h4>
         <h4><strong>Nationality:</strong> Bangladesh</h4>
         <h4><strong>Killed by:</strong> Criminal Group</h4>
         <h4><strong>Location:</strong> Kashipur, Bangladesh</h4>
         <h4><strong>Press organization:</strong> Gramer Kagoj </h4>
-        <h4> What&apos;s Jamal Uddin&apos;s story?</h4>
+        <h4> What&apos;s <span>Jamal Uddin&apos;s</span> story?</h4>
             An unidentified group of men armed with sharp weapons,including machetes, attacked Uddin at a tea stall in Kashipur village in thedistrict of Jessore on the border with India, according to news reports. Theassailants slashed his arms, legs, and eyes, leaving him with multiple severeinjuries, news reports said. Uddin died at a local hospital later that night,the reports said.Uddin, a reporter for the Bengali-language daily GramerKagoj, had been threatened in the past in relation to his reporting on thelocal criminal drug trade, police told local journalists.In July, police arrested Raju Mollik, who told a Jessorecourt that he was among the group of men who had called Uddin to meet at thetea stall, according to the local news website bdnews24.Mollik also said he had helped the assailants drug the journalist and attackhim when he passed out, the report said. The suspect said the attack was inreprisal for his reporting, bdnews24 reported.Mollik and at least two other suspects were in custody inlate 2012 pending further legal proceedings, according to local news reports. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([23.1923617, 89.6112727], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([23.1923617, 89.6112727], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([23.1923617, 89.6112727]).addTo(map);
         </script>
     </body>
 </html>

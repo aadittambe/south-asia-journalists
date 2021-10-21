@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Musa Khankhel</h2>
         <h4><strong>Year:</strong> 2009 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Military Officials</h4>
         <h4><strong>Location:</strong> Swat, Pakistan</h4>
         <h4><strong>Press organization:</strong> Geo TV and The News </h4>
-        <h4> What&apos;s Musa Khankhel&apos;s story?</h4>
+        <h4> What&apos;s <span>Musa Khankhel&apos;s</span> story?</h4>
             No one claimed responsibility for the killing of Khankhel,who died in the first violation of a truce called two days earlier between thegovernment and local militant groups, according to local and international newsreports. Khankhel was targeted while covering a peace march led by Muslimcleric Sufi Muhammad, father-in-law of local Taliban leader Maulana Fazlullah,the reports said. Muhammad was seeking to recruit his son-in-law to join acease-fire agreement he had negotiated with the government. Geo Managing Director Azhar Abbas told CPJ that Khankhel hadbecome separated from the rest of his four-person reporting team in amilitant-controlled area near the town of Matta. He suffered multiple gunshotwounds to the torso and back of the head, Abbas said. A BBC report citingKhankhel’s brother said the journalist had been abducted at gunpoint from thepeace march, and that his hands and feet were bound when his body wasdiscovered.Khankhel had told supervisors that the army was retaliatingagainst him for his aggressive coverage of the military offensive in Swat. Hesaid he was being threatened, denied access, and barred from news conferences.Hamid Mir, his supervisor at the time, told CPJ that Khankhel called him on theday of the murder to say that he feared for his life and believed theInter-Services Intelligence Directorate intended to kill him. Mir said Khankelwas killed just hours later. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([34.31922775, 71.59029391], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([34.31922775, 71.59029391], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([34.31922775, 71.59029391]).addTo(map);
         </script>
     </body>
 </html>

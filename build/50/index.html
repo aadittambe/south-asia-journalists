@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Harunur Rashid</h2>
         <h4><strong>Year:</strong> 2002 </h4>
         <h4><strong>Nationality:</strong> Bangladesh</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Khulna, Bangladesh</h4>
         <h4><strong>Press organization:</strong> Dainik Purbanchal </h4>
-        <h4> What&apos;s Harunur Rashid&apos;s story?</h4>
+        <h4> What&apos;s <span>Harunur Rashid&apos;s</span> story?</h4>
             Rashid, a reporter for the Bengali-language newspaper Dainik Purbanchal,was ambushed by gunmen while he was riding his motorcycle to work inthe southwestern city of Khulna, according to Bangladeshi andinternational news reports. Dainik Purbanchal, which is published in Khulna, is a well-regarded regional daily.Three unidentified young men brought Rashid to a hospital, told doctorshe had been injured in a car accident, and then disappeared. A doctorat the hospital told the Dhaka-based newspaper The Independent that Rashid had suffered a fatal bullet wound to his chest.Rashid, also known as Rashid Khukon, was a crime reporter who hadwritten several stories on official corruption and links betweencriminal syndicates and outlawed Maoist guerrilla groups, including thePurbo Bangla Communist Party (PBCP). Rashid’s relatives told reportersthat he was on a PBCP hit list. Though the PBCP issued a statementdenying responsibility for Rashid’s murder, some colleagues said asplinter faction of the group may be behind the killing.The reporter had received anonymous death threats throughout his careerand, for the last year, had been provided police protection. However,he did not always travel with security guards.Local journalists believe Rashid was killed for his reporting. AmiyaKanti Pal, a former colleague, told Reuters that, “Rashid was a bravereporter. We suspect that the criminals he wrote about might be behindhis murder.”          The Criminal Investigation Department, a federal law enforcement body, is investigating the case. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([22.8083689, 89.4426887], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([22.8083689, 89.4426887], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([22.8083689, 89.4426887]).addTo(map);
         </script>
     </body>
 </html>

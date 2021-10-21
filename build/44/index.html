@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Gautam Das</h2>
         <h4><strong>Year:</strong> 2005 </h4>
         <h4><strong>Nationality:</strong> Bangladesh</h4>
         <h4><strong>Killed by:</strong> Government Officials</h4>
         <h4><strong>Location:</strong> Faridpur, Bangladesh</h4>
         <h4><strong>Press organization:</strong> Samakal </h4>
-        <h4> What&apos;s Gautam Das&apos;s story?</h4>
+        <h4> What&apos;s <span>Gautam Das&apos;s</span> story?</h4>
             Das, a reporter for the Dhaka-based daily Samakal, was found strangled in his bureau office in the town of Faridpur, 40 miles (64 kilometers) west of the Bangladeshi capital, according to news reports.  A colleague called police after repeated telephone calls to Das went unanswered and the door of the Samakal bureau in Faridpur remained locked at midday, according to the local advocacy group Media Watch. At 2 p.m., police broke down the door of the office to find Das’ body inside, with fractures to the legs and hand and nylon rope around his neck, according to a statement by the group.  Although colleagues were not aware of any specific threat against the reporter, they said that Das had written about sensitive topics such as the activities of Islamist militant groups, according to Media Watch. Sumi Khan, a reporter for Samakal, said that Das was known for his reporting on crime and corruption, including coverage of illegal activities by members of the ruling Bangladesh Nationalist Party. The Associated Press reported that Das had recently written about local government officials accused of taking bribes in exchange for construction contract awards.  Two days later, journalist groups around the country protested the killing and criticized the government for not doing more to protect the press.  On November 19, police arrested Tamjid Hossain Babu, the son of a local MP, in connection with Das’ murder, according to The Daily Star. Local journalists said police arrested three other suspects.In 2006, Das’ murder case was transferred from the local district court to the Dhaka Speedy Tribunal Court 1 for expedited judgment after pressure from local journalists. One defendant challenged the legality of this transfer, which resulted in further delays, according to reports.On June 27, 2013, a court sentenced nine individuals to life in prison in connection with Das’ murder. Eight of the nine convicted were junior politicians belonging to the opposition Bangladesh Nationalist Party, including Babu, according to news reports.At the time, many local journalists hailed the verdict as a landmark, the first time a Bangladeshi court has successfully prosecuted a murder of a journalist.On January 30, 2019, the High Court upheld the sentences of five of those who were convicted and acquitted four others, according to news reports. The Daily Star reported that the court upheld the life sentences of Asif Imran, Siddiqur Rahman Miah, Asad Bin Kadir, Abu Taher Mohammad Mortuza Ahsan and Tamzid Hossain Babu. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([23.6040182, 89.8415542], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([23.6040182, 89.8415542], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([23.6040182, 89.8415542]).addTo(map);
         </script>
     </body>
 </html>

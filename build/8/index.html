@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Ahmed Rajib Haider</h2>
         <h4><strong>Year:</strong> 2013 </h4>
         <h4><strong>Nationality:</strong> Bangladesh</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Dhaka, Bangladesh</h4>
         <h4><strong>Press organization:</strong> Freelance </h4>
-        <h4> What&apos;s Ahmed Rajib Haider&apos;s story?</h4>
+        <h4> What&apos;s <span>Ahmed Rajib Haider&apos;s</span> story?</h4>
             Haider, a blogger also known as “Thaba Baba,” was killed by assailants wielding machetes outside his home in the Pallabi neighborhood in the capital, Dhaka.Haider, who also worked as an architect, had written critically on his blog and social networking sites about Islamic fundamentalism and Islamist groups, and had covered mass nationwide demonstrations, called the “Shahbagh movement,” in which protesters called for the death penalty for leaders of the Jamaat-e-Islami party who were on trial for war crimes.Haider’s brother said he had been targeted by the Islami Chhatra Shibir–the student wing of the Jamaat-e-Islami party–for his “online activities,” reports said. News reports said activists of the Shahbagh movement also blamed members of the Islami Chhatra Shibir for the blogger’s death. The student wing has been involved in sporadic street attacks since the protests began, according to reports.Members of the Jamaat-e-Islami party denied the accusations, reports said.News reports also cited Haider’s relatives and friends as saying the blogger was killed for the posts he wrote urging that the alleged war criminals be brought to justice. News reports citing another Bangladeshi blogger, Shakil Ahmed, said that a pro-Jamaat website had named Haider as a target the week before his death.News accounts reported that Haider also used his Facebook page to publicize the protests and encourage demonstrators to attend them. The day before his death, the blogger had participated in the protests, reports said. On February 11, 2013, a blog, called Sonarbangla, which is run by members of the Jamaat-e-Islami party and its student wing, published a story calling Haider one of the main organizers of the protests, news reports said.Police arrested five individuals who confessed to the murder and said they had received an order from an Islami Chhatra Shibir leader to kill Haider, and that it was their religious obligation to do so, reports said. Police told the media that the plot to kill the blogger had been formed several months prior in connection with Haider’s Facebook posts that criticized Islamic fundamentalism and Islamist groups.On December 31, 2015, a Dhaka court convicted and sentenced two students to death for Haider’s murder, including Rezwanul Azad Rana, a fugitive who was charged in absentia and who was described by police as the mastermind, according to news reports. Six others were convicted in the attack, according to The Associated Press. The court sentenced Jashim Uddin Rahmani, the leader of banned Islamist group Ansarullah Bangla Team, to five years in jail for “abetting murder” by inciting students to kill secular bloggers; one student was sentenced to life imprisonment for murder; and four others were jailed for three years on lesser charges, according to news reports. A lawyer for the defendants said they would appeal, reports said.CPJ research showed an escalation in attacks against online journalists in Bangladesh since the beginning of 2013. In early April, authorities arrested four journalists, one of whom had been stabbed a few months prior.Haider’s funeral procession was attended by tens of thousands. He is survived by his wife. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([23.7861979, 90.4026151], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([23.7861979, 90.4026151], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([23.7861979, 90.4026151]).addTo(map);
         </script>
     </body>
 </html>

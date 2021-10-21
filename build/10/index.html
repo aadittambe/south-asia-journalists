@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Aiyathurai Nadesan</h2>
         <h4><strong>Year:</strong> 2004 </h4>
         <h4><strong>Nationality:</strong> Sri Lanka</h4>
         <h4><strong>Killed by:</strong> Military Officials</h4>
         <h4><strong>Location:</strong> Batticaloa, Sri Lanka</h4>
         <h4><strong>Press organization:</strong> Virakesari </h4>
-        <h4> What&apos;s Aiyathurai Nadesan&apos;s story?</h4>
+        <h4> What&apos;s <span>Aiyathurai Nadesan&apos;s</span> story?</h4>
             Nadesan, a veteran Tamil journalist with the national Tamil-languagedaily Virakesari, was shot by unidentified assailants in Batticaloa,a town on the eastern coast of Sri Lanka about 135 miles (216 kilometers)from the capital, Colombo, according to international news reportsand local journalists.Nadesan, who had worked at Virakesari for 20 years, was onhis way to work when he was ambushed near a Hindu temple. The assailantsescaped, and no group claimed responsibility.Nadesan was an award-winning journalist who used the pen name NellaiG. Nadesan. He also reported for the International Broadcast Group,a Tamil-language radio station that broadcasts from London. Violence erupted in Sri Lanka’s eastern region in the weeks beforethe murder after the main Tamil rebel group, the Liberation Tigersof Tamil Eelam (LTTE), launched a military offensive against a breakawayfaction headed by a soldier known as Colonel Karuna. Local journalistssaid that Nadesan was sympathetic to the LTTE. The LTTE accused theSri Lankan army and members of the breakaway faction of Nadesan’smurder, according to the pro-LTTE Internet news site Tamil.net.Nadesan had been harassed and threatened before his death becausehe had criticized the government and security forces, according toCPJ research. On June 17, 2001, a Sri Lankan army officer summonedNadesan for an interrogation and threatened the journalist with arrestunless he ceased reporting about the army.  
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([7.7356027, 81.6941956], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([7.7356027, 81.6941956], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([7.7356027, 81.6941956]).addTo(map);
         </script>
     </body>
 </html>

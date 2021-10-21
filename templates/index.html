@@ -46,7 +46,7 @@
         </table>
 
         <p class="update">Methodology and sources</p>
-        <p>This is my first news applications developed after completing the <a href="https://first-news-app.readthedocs.io/en/latest/#">First News App</a> tutorial. I wrote a web scraper to collect data from the <a href="#">Committee to Protect Journalists</a> website to obtain biographical descriptions of each journalist's death. Using the GeoPy package, I converted locations to geographical coordinates &mdash; after cleaning and analyzing the data in pandas.</p>
+        <p>This is my first news application developed after completing the <a href="https://first-news-app.readthedocs.io/en/latest/#">First News App</a> tutorial. I wrote a web scraper to collect data from the <a href="#">Committee to Protect Journalists</a> website to obtain biographical descriptions of each journalist's death. Using the GeoPy package, I converted locations to geographical coordinates &mdash; after cleaning and analyzing the data in pandas.</p>
         <p>In addition to the First News App tutorial, thank you to the following resources for inspiration:</p>
         <ul>
             <li><a href="https://cpj.org/2021/09/indian-finance-authorities-raid-offices-of-newslaundry-and-newsclick-websites">Indian finance authorities raid offices of Newslaundry and Newsclick websites</a></li>
@@ -59,7 +59,7 @@
         <p></p>
 
         <div class="footer">
-            <p style="">© Developed by Aadit Tambe &mdash; 2021</p>
+            <p style="">Developed by Aadit Tambe &mdash; 2021</p>
           </div>
         <script type="text/javascript">
            $(document).ready(function() {	
@@ -69,7 +69,8 @@
             var map = L.map('map').setView([20.0439549,78.9543129], 4);
             var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
                 id: 'mapbox/light-v10',
-                maxZoom: 18,
+                maxZoom: 12,
+                minZoom: 3,
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
@@ -122,7 +123,7 @@
                 fillOpacity: 0.8
             };  
             function getColor(d) {
-    // console.log(d)
+            // console.log(d)
                 return d == "Dangerous Assignment" ? '#168FFF' :
                     d == "Crossfire" ? '#17cb49' :
                         d == "Murder" ? '#f74141' :
@@ -162,22 +163,20 @@
                         }          return L.circleMarker(latlng, geojsonMarkerDangerous);
                     },
 	                onEachFeature: function(feature, layer) {
-
-	                	//When marker is clicked, show info panel on the side
 	                	layer.on('click', function(event) {
                             $('html').click(function(e) {   
+                            // console.log(e.target)
+                            // if anything oterh than the dot is clicked, take display away
                             if( !$(e.target).hasClass("leaflet-interactive") )
                             {   
                                 $('#info').css('display', 'none')
-                                $('#map').css('width', '100%');
                             }
                             });    
 	                		$('#info').css('display', 'block')
+                            // what's their story
 	                				.html('<h2>'+ '<span> '+ feature.properties.fullName + "&apos;s </span> story" + '</h2>' + feature.properties.desc);
                             
 	                	});
-                        // console.log(feature.properties)
-	                	//Info shown on map popup
 	                	layer.bindPopup('<strong>' + feature.properties.fullName + '</strong>' + '  was killed in '+feature.properties.location+' in '+feature.properties.year + '.');
 	                }
 	            });

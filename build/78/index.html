@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Mirza Iqbal Hussain</h2>
         <h4><strong>Year:</strong> 2013 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Quetta, Pakistan</h4>
         <h4><strong>Press organization:</strong> News Network International </h4>
-        <h4> What&apos;s Mirza Iqbal Hussain&apos;s story?</h4>
+        <h4> What&apos;s <span>Mirza Iqbal Hussain&apos;s</span> story?</h4>
             Hussain,a photographer for News Network International, a Pakistani independent newsagency, died in a hospital from injuries he sustained in a bomb blast that occurred10 minutes after an initial explosion near a billiards hall in Quetta, capitalof Baluchistan province, according to NNI editor Tariq Nadeem and local news reports.Thetwin blasts killed dozens, including police, emergency workers, and journalistswho rushed to the scene of the first explosion, according to news reports. Thebilliards hall is in a predominantly Shia area of Quetta. The bombings werepart of a series of bomb attacks reported across Pakistan that day, newsreports said.Atleast two other journalists were killed covering the explosion. Imran Shaikh, asenior cameraman for Samaa TV, was killed in the blast, and Saif ur Rehman, areporter for the outlet, died a few hours later at a local hospital frominjuries he sustained in the explosion, news reports said. TheAssociated Press reported that Lashkar-e-Jhangvi, a sectarian militant group,claimed responsibility for the attack. Bakar Saddiq, a spokesman for the group,said a suicide bomber carried out the first attack, while the second was a carbomb that had been detonated remotely, the AP said. Hussainhad worked with News Network International for four years, Nadeem told CPJ.Hussain’s brother, Mirza Mohammad Hussain, a photographer for Independent News Pakistan,a national news agency, was injured while covering the blast, Nadeem said. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([30.1957677, 67.0172447], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([30.1957677, 67.0172447], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([30.1957677, 67.0172447]).addTo(map);
         </script>
     </body>
 </html>

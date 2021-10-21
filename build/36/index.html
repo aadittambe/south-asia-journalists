@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Dwijamani Singh</h2>
         <h4><strong>Year:</strong> 2012 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> Government Officials</h4>
         <h4><strong>Location:</strong> Imphal, India</h4>
         <h4><strong>Press organization:</strong> Prime News </h4>
-        <h4> What&apos;s Dwijamani Singh&apos;s story?</h4>
+        <h4> What&apos;s <span>Dwijamani Singh&apos;s</span> story?</h4>
             Singh was shot dead by police while he was covering a protest in Imphal, the capital of Manipur state. The cameraman, 36, worked for the news division of the satellite-distributed Prime News channel that covers northeast India. News reports initially identified Singh using different spellings of his name.Prime News reported that Singh was shot in the chest and died at a local hospital. Police said the journalist was shot by accident while they were trying to disperse protesters with live ammunition, according to news reports. Five police officers were suspended, the reports said.Protesters gathered in Imphal to demonstrate against the reported December 18 public sexual assault of Momoko, a local actress, by members of a separatist group, according to news reports. The protest was also part of mass demonstrations against the sexual assault of women after the December 16 gang rape of a 23-year-old woman on a bus in Delhi.In December 2012, the All Manipur Working Journalists’ Union and the state government signed a memorandum of understanding in connection with the death of Singh, according to news accounts. The memorandum called for the immediate suspension of the police officers allegedly involved in the shooting, pending investigation; for financial assistance to be provided to the cameraman’s family; and for the creation of media policies to address the welfare of journalists, including those reporting in conflict situations.That same week, the state government suspended officers ASI K Romendro Singh and Kh Naba-kumar Singh, pending a departmental investigation, reports said.The state government announced Rs. 500,000 (US $7,400) compensation to the family, according to reports.According to the journalist union, there were no further proceedings in the case against the police officers. CPJ called the union on several occasions in spring 2016 to seek comment but the calls were not answered. L.M.Khoute, the ADGP, Law and Order did not respond to CPJ’s request for comment in spring 2016.Local journalists told Al-Jazeera that Singh was survived by two children. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([24.7991162, 93.9364419], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([24.7991162, 93.9364419], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([24.7991162, 93.9364419]).addTo(map);
         </script>
     </body>
 </html>

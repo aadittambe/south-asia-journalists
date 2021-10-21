@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Shahid Soomro</h2>
         <h4><strong>Year:</strong> 2002 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Government Officials</h4>
         <h4><strong>Location:</strong> Kandhkot, Pakistan</h4>
         <h4><strong>Press organization:</strong> Kawish </h4>
-        <h4> What&apos;s Shahid Soomro&apos;s story?</h4>
+        <h4> What&apos;s <span>Shahid Soomro&apos;s</span> story?</h4>
             Soomro, a correspondent for the Sindhi-language newspaper Kawish, was assassinated in the town of Kandhkot, Sindh Province, apparently in reprisal for his reporting on abuses committed during general elections held on October 10. At around midnight on October 20, three men went to Soomro’s home and tried to abduct him, according to his younger brother Aziz, who witnessed the crime. When Soomro resisted, the men shot him dead. Kawish editor Ali Kazi said that Soomro had at least nine bullet wounds and died almost instantly. The gunmen escaped with two accomplices in a white car waiting outside Soomro’s house, said local news reports. Aziz filed a case with police identifying three of the assailants by name, Wahid Ali Bijarani, Mohammad Ali Bijarani, and Mohammad Siddiq. Wahid Ali and Mohammad Ali, who are brothers, are members of the powerful Bijarani family, which owns much land in the area around Kandhkot and exercises considerable influence through the feudal system still prevalent in much of Pakistan. A third brother, Mir Mehboob Bijarani, was elected to the Sindh Provincial Assembly in the October 10 poll, while an uncle, Mir Hazzar Khan Bijarani, won a seat in the National Assembly. (Both represent exiled former prime minister Benazir Bhutto’s Pakistan People’s Party.) Soomro’s colleagues suspect that he was killed for his reporting about alleged abuses committed by Bijarani family members and supporters during the general elections. Soomro had a reputation for courageous, independent reporting, and his publication, Kawish, is one of the most influential newspapers in Sindh Province. On October 24, 2002, police announced that Wahid Ali Bijarani, Mohammad Ali Bijarani, and Mohammad Siddiq, the three suspects identified by the journalist’s family, had been detained for questioning. At year’s end, the three men remained in custody but had not been charged. The Bijarani family did not comment publicly on the allegations. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([28.2449018, 69.1814167], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([28.2449018, 69.1814167], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([28.2449018, 69.1814167]).addTo(map);
         </script>
     </body>
 </html>

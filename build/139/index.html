@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Shan Dahar</h2>
         <h4><strong>Year:</strong> 2014 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Criminal Group</h4>
         <h4><strong>Location:</strong> Larkana, Pakistan</h4>
         <h4><strong>Press organization:</strong> Abb Takk Television </h4>
-        <h4> What&apos;s Shan Dahar&apos;s story?</h4>
+        <h4> What&apos;s <span>Shan Dahar&apos;s</span> story?</h4>
             Dahar, a reporter for Abb TakkTelevision, was shot in the back while filming outside a pharmacy near theBadah Press Club in Larkana, according to his sister and brother-in-law whospoke to CPJ. He died shortly after at a local hospital.Initial mediareports suggested that Dahar was hitby a stray bullet as weapons were being fired into the air during New Yearcelebrations, but in the days that followed, journalists and local mediasupport groups suggested this was an intentional killing.Dahar’s sister and brother-in-lawtold CPJ that they had seen the video that Dahar was recording at the time hewas killed. The video shows medication Dahar bought at a pharmacy that had a“not for resale” stamp on it, they said. The journalist was killed a fewminutes after that.Shortly before his death, Daharhad broadcast a story on drug sales. At the time he was killed, he was workingon a report about the unauthorized sale of pharmaceutical drugs in the area,according to Nasir Baig Chughtai, the director of news for Abb Takk. Accordingto Dahar’s family, medications allocated by a local NGO for the poor were beingresold illegally. Chughtai told CPJ that Dahar hadcovered a range of stories on sensitive local issues, including politics andpoverty, and had been killed in retaliation for his work.Dahar’s family as well as several local journalists expressed dismay at what they felt wasnegligence on the part of the medical staff at the hospital that treated Dahar,saying he would still be alive if he received timely and adequate medical care,according to news reports.Chughtai told CPJ that althougha suspect had been taken into custody, he believed the main culprits were stillat large. Local journalists have raisedconcern about the way the investigation was carried out, according to newsreports. Despite a postmortem report being released, police have notoffered a conclusive motive in the journalist’s death. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([27.5564798, 68.2101509], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([27.5564798, 68.2101509], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([27.5564798, 68.2101509]).addTo(map);
         </script>
     </body>
 </html>

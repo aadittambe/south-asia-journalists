@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Saqib Khan</h2>
         <h4><strong>Year:</strong> 2012 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Karachi, Pakistan</h4>
         <h4><strong>Press organization:</strong> Ummat </h4>
-        <h4> What&apos;s Saqib Khan&apos;s story?</h4>
+        <h4> What&apos;s <span>Saqib Khan&apos;s</span> story?</h4>
             Khan, a photographer for the Urdu-language paper Ummat, diedfrom injuries he sustained in a bomb explosion that occurred 30 minutes afteranother blast outside a Shia site in Karachi, according to the InternationalFederation of Journalists and the Pakistan Federal Union of Journalists. Khanwas killed while covering the first explosion, the same sources said.Police said the first blast was a suicide attack, while thesecond bomb was detonated with a remote-controlled device. The second bombexploded about 50 feet from the first one, wounding reporters, police officers,and bomb disposal teams who had arrived at the scene. The bombs exploded at a site frequently used for Shiacommemoration ceremonies; Shias were celebrating the holy month of Muharram,the first month of the Islamic calendar. No group claimed responsibility for the twin bombings, buttwo days after the explosions, Taliban spokesman Ihsanullah Ihsan called AgenceFrance-Presse and said the Taliban had dispatched more than 20 suicide bombersto target Shia Muslims. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([24.8546842, 67.0207055], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([24.8546842, 67.0207055], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([24.8546842, 67.0207055]).addTo(map);
         </script>
     </body>
 </html>

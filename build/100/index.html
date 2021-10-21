@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Niloy Neel</h2>
         <h4><strong>Year:</strong> 2015 </h4>
         <h4><strong>Nationality:</strong> Bangladesh</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Dhaka, Bangladesh</h4>
         <h4><strong>Press organization:</strong> Freelance </h4>
-        <h4> What&apos;s Niloy Neel&apos;s story?</h4>
+        <h4> What&apos;s <span>Niloy Neel&apos;s</span> story?</h4>
             At least four assailants entered the blogger’s home and hacked him to death with sharp weapons in the Goran neighborhood in the capital, Dhaka, according to news reports.The blogger was popularly known by his penname, Niloy Neel. His last name was identified in news reports as Chatterjee and Chattopadhyay.Neel frequently criticized Islamic extremism and advocated for minority rights, as well as secular ideas, according to news reports. He was a regular contributor to Mukto-Mona, the blog founded by Bangladeshi-American blogger Avijit Roy, who was murdered in February 2015 while visiting Dhaka, The Wall Street Journal reported. Neel also contributed to Istishon, a blog on social and political issues, according to Global Voices, and posted commentaries on Facebook.Neel was also an active member of the Ganajagaran Mancha, a group campaigning for the execution of those accused of committing war crimes during Bangladesh’s 1971 war of independence.In 2013, Neel’s name appeared on a list widely circulated by Islamist groups in Bangladesh that called for the deaths of 84 bloggers perceived to be atheists, according to news accounts.The BBC reported that Neel identified as a secular atheist and came from a Hindu background–similar to bloggers Roy and Ananta Bijoy Das, slain earlier in 2015.Neel was the fourth blogger to be killed in Bangladesh in six months. Another secular blogger, Washiqur Rahman Babu, died on March 30 from injuries he sustained in an attack in broad daylight.Hours after Neel was killed, an Islamist group claimed responsibility for his death, according to news accounts.Neel’s wife, Asha Moni, said that a few months prior to his death, police at a nearby police station refused to accept a complaint Neel tried to file after he noticed he was being followed by strange men, according to reports, which also cited a review of Neel’s Facebook posts. Police said they were unaware of any such request.The blogger’s friends said he had been threatened in the past, The Wall Street Journal reported. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([23.7861979, 90.4026151], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([23.7861979, 90.4026151], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([23.7861979, 90.4026151]).addTo(map);
         </script>
     </body>
 </html>

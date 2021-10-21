@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Dhan Bahadur Rokka Magar</h2>
         <h4><strong>Year:</strong> 2003 </h4>
         <h4><strong>Nationality:</strong> Nepal</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Jaluki, Nepal</h4>
         <h4><strong>Press organization:</strong> Radio Nepal </h4>
-        <h4> What&apos;s Dhan Bahadur Rokka Magar&apos;s story?</h4>
+        <h4> What&apos;s <span>Dhan Bahadur Rokka Magar&apos;s</span> story?</h4>
             Rokka Magar, a newsreader for the Kham Magar­language service of RadioNepal, was abducted by Maoist rebels on August 1, 2002, while travelingby bus to the town of Surkhet, where he worked. Rebels intercepted thebus near Jaluki, a Maoist-controlled village near the borders ofWestern Rolpa and Pyuthan districts, and kidnapped several passengers,including Rokka Magar and a representative from the British charityGurkha Welfare Trust.It was not clear why the Maoists targeted certain passengers, butrebels generally view journalists working for state-run Radio Nepal asgovernment agents.In October 2004, rebels informed Rokka Magar’s wife, Dil Kumari, thathe had been taken to Khawang, a forested area between Rukum and Rolpain midwestern Nepal, and killed in January 2003 on suspicion of spyingfor the government, according to local news reports.The news was first reported in the Nepalese media in March 2005. RokkaMagar had been on CPJ’s missing list, but his case was reclassifiedbased on the new reports. The journalist’s body has not been found. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([25.6483972, 93.6689432], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([25.6483972, 93.6689432], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([25.6483972, 93.6689432]).addTo(map);
         </script>
     </body>
 </html>

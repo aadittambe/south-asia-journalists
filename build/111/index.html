@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Rajdev Ranjan</h2>
         <h4><strong>Year:</strong> 2016 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> Criminal Group</h4>
         <h4><strong>Location:</strong> Siwan, Bihar, India</h4>
         <h4><strong>Press organization:</strong> Hindustan </h4>
-        <h4> What&apos;s Rajdev Ranjan&apos;s story?</h4>
+        <h4> What&apos;s <span>Rajdev Ranjan&apos;s</span> story?</h4>
             Unknown men shot Rajdev Ranjan, the Hindi national daily newspaper Hindustan‘s bureau chief for Siwan, in the central Indian state of Bihar, at close range as he was returning to his office, according to press reports. The journalist, also identified as Rajdeo Ranjan in press reports, was hit in the head and the chest, killing him, according to local media. Police said they were investigating the killing, and said Ranjan had no known personal enmity with anyone, according to reports. In June, police said they had arrested five suspects in the shooting, who named Laddan Mian as the man who hired them to commit the murder, reports said. Mian, whom news reports identified as having political connections, voluntarily appeared before a court on June 2, 2016, and denied involvement in the killing, news reports said. The journalist’s widow, Asha Devi, believes Ranjan was killed in retribution for his critical reporting on a lawmaker who is currently serving prison time for dozens of charges, including murder, illegal possession of firearms, and voter-intimidation, according to news reports. In March 2016, Ranjan had broken news about a prison meeting between the former lawmaker and another local official, who shared a “feast,” reports said. Local journalists said Ranjan had been receiving death threats from criminals before his death, news accounts said.Chief Minister Nitish Kumar’s state government called for a probe into the killing by the national-level investigative agency, the Central Bureau of Investigation, according to reports. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([26.1310043, 84.39125661], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([26.1310043, 84.39125661], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([26.1310043, 84.39125661]).addTo(map);
         </script>
     </body>
 </html>

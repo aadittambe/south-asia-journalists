@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Mohammed Muslimuddin</h2>
         <h4><strong>Year:</strong> 2008 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> Criminal Group</h4>
         <h4><strong>Location:</strong> Barpukhuri, India</h4>
         <h4><strong>Press organization:</strong> Asomiya Pratidin </h4>
-        <h4> What&apos;s Mohammed Muslimuddin&apos;s story?</h4>
+        <h4> What&apos;s <span>Mohammed Muslimuddin&apos;s</span> story?</h4>
             About six assailants armed with “sharp weapons” attacked Mohammed Muslimuddin, a correspondent with the daily Asomiya Pratidin, near his residence in the village of Barpukhuri in northeastern Assam state, according to local news reports. He died of multiple injuries to the head, chest, stomach, and back en route to a hospital in the capital, Guwahati, the reports said.News reports quoting senior editors at his newspaper said Muslimuddin was targeted for writing about criminal activities, including the illegal drug trade, in the weeks leading up to his murder. His reporting implicated local influential figures and politicians, according to news reports. Local journalists told CPJ that they staged protests throughout the state to call attention to the murder. Three suspects–Qutubur Rahman, Mohammed Tuta Miyan and Mohhamed Joynul Haque have been arrested in connection with Muslimmuddin’s murder, according to news reports. Ajit Kumar Bhuyan, the editor of Asomiya Pratidin, said he suspected a nexus of a bigger criminal gang and powerful people in the area were behind the attack, according to reports. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([6.0154005, 92.837707], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([6.0154005, 92.837707], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([6.0154005, 92.837707]).addTo(map);
         </script>
     </body>
 </html>

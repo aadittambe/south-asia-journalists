@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Shoba</h2>
         <h4><strong>Year:</strong> 2009 </h4>
         <h4><strong>Nationality:</strong> Sri Lanka</h4>
         <h4><strong>Killed by:</strong> Military Officials</h4>
         <h4><strong>Location:</strong> Mullivaikkal, Sri Lanka</h4>
         <h4><strong>Press organization:</strong> O&#39;liveechchu </h4>
-        <h4> What&apos;s Shoba&apos;s story?</h4>
+        <h4> What&apos;s <span>Shoba&apos;s</span> story?</h4>
             Tamil news presenter Shoba was shown shot and killed inamateur video filmed by Sri Lankan soldiers and obtained by the U.K.’s Channel4. Journalists for Democracy in Sri Lanka said Shoba died in the town of Mullivaikkalin the northeastern “no fire zone.”Shoba, who went by one name, also reported under the nameIsaipriya or Isaippiriya for the media division of the secessionist LiberationTigers of Tamil Eelam (LTTE), including the videomagazine O’liveechchu, according to Channel 4 and the pro-LTTE TamilNet news website. The mannerof Shoba’s death is not known, although several point-blank executions of boundprisoners were filmed in the same location. Channel 4 reporter Jon Snow said inthe documentary film, “Sri  Lanka‘s Killing Fields,” that Shoba’s bodywas found among some that “appear to have been raped or sexually assaulted, andthen murdered.”The Sri Lankan Ministry of Defense described Shoba as Lt.Col. Issei Piriya, a Tamil Tigers communications leader killed during battle byits 53 Division troops on May 18, one day before the government announcedvictory. Although Channel 4 said the footage had been authenticated by theU.N., the Sri Lankan government denounced the videos as fake.Both TamilNet andChannel 4 described Shoba, 27, as a working journalist.  
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([9.30691155, 80.78401459], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([9.30691155, 80.78401459], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([9.30691155, 80.78401459]).addTo(map);
         </script>
     </body>
 </html>

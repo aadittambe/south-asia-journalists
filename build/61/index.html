@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Janullah Hashimzada</h2>
         <h4><strong>Year:</strong> 2009 </h4>
         <h4><strong>Nationality:</strong> </h4>
         <h4><strong>Killed by:</strong> Military Officials</h4>
         <h4><strong>Location:</strong> Jamrud, Pakistan</h4>
         <h4><strong>Press organization:</strong> freelance </h4>
-        <h4> What&apos;s Janullah Hashimzada&apos;s story?</h4>
+        <h4> What&apos;s <span>Janullah Hashimzada&apos;s</span> story?</h4>
             Four unidentified gunmen fired on the Afghan journalist andhis colleague, Ali Khan, while they were traveling on a public minibus near thetown of Jamrud, Khyber Agency, northwestern Pakistan, according to local andinternational news reports. A white sedan carrying the gunmen intercepted the bus withHashimzada and Khan as it was en route to Peshawar from the Afghan border townof Torkham, according to The Associated Press. The gunmen targeted thejournalists, killing Hashimzada and severely injuring Khan, according to AP. Noother injuries were reported. The type of vehicle used by the gunmen is standardissue for Pakistan’s intelligence agency.Both journalists worked for Afghanistan’s Shamshad TV.Hashimzada, the station’s Peshawar-based bureau chief for Pakistan, alsoreported for AP, the Pajhwok Afghan News agency, and other news outlets, thereports said. No one claimed responsibility for the killing, according to newsreports.Hashimzada was known as a critic of the Taliban insurgencyin Afghanistan, and his reports had challenged the authorities and intelligenceagencies in both Pakistan and Afghanistan, the reports said. “He receivedthreats four weeks ago to leave Peshawar and not report Taliban and Al-Qaedaactivity in Pakistan. It is clear … he lost his life for reporting,” DanishKarokhel, director of Pajhwok Afghan News agency, told CPJ.Daud Khattak, a local journalist who later joined Radio FreeEurope/Radio Liberty in Prague, said Hashimzada had recently interviewed aTaliban spokesman in the Hyatabad area of Peshawar. The story was potentiallyembarrassing to the military because it showed that a prominent Talibanofficial was living openly in a main city. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([34.0020094, 71.3808343], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([34.0020094, 71.3808343], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([34.0020094, 71.3808343]).addTo(map);
         </script>
     </body>
 </html>

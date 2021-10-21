@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Shahid Zehri</h2>
         <h4><strong>Year:</strong> 2021 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Hub, Pakistan</h4>
         <h4><strong>Press organization:</strong> Metro 1 News </h4>
-        <h4> What&apos;s Shahid Zehri&apos;s story?</h4>
+        <h4> What&apos;s <span>Shahid Zehri&apos;s</span> story?</h4>
             On October 10, 2021, Shahid Zehri, a reporter for the privately owned news channel Metro 1 News, was killed in an explosion while driving his car in the southern Pakistan city of Hub, in the Lasbela district of Baluchistan province, according to multiple news reports citing local police officials, and a report by his employer. The Baloch Liberation Army, an ethnic separatist group, took responsibility for the attack in a press release posted to social media, accusing Zehri of working with the intelligence branch of Pakistan’s military and “committing various crimes using the noble profession of journalism” with the support of the Frontier Corps, a government paramilitary force that operates in Baluchistan province.Zehri, 35, died shortly after he was transferred to a hospital in the southern city of Karachi, according to those news reports, which said that his companion was also injured in the attack. Police opened an investigation into the killing, according to those reports.A local police official told Al-Jazeera that the explosion appeared to have been caused by a magnetic device attached underneath Zehri’s driver’s seat; however, Dawn reported that security footage showed that the car was hit by a roadside bomb. Both reports state that the killing appeared to be a targeted attack.A representative of Metro 1 News told CPJ in a phone interview that Zehri covered general news and politics in Baluchistan province and did not engage in investigative reporting. The representative said that he did not know of a particular report by Zehri that could have led to the attack.CPJ emailed Tariq Ilahi, senior superintendent of the Lasbela district police, for comment, but did not receive any reply. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([25.0255428, 66.8840285], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([25.0255428, 66.8840285], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([25.0255428, 66.8840285]).addTo(map);
         </script>
     </body>
 </html>

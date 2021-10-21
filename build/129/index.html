@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Saiful Alam Mukul</h2>
         <h4><strong>Year:</strong> 1998 </h4>
         <h4><strong>Nationality:</strong> Bangladesh</h4>
         <h4><strong>Killed by:</strong> </h4>
         <h4><strong>Location:</strong> Jessore, Bangladesh</h4>
         <h4><strong>Press organization:</strong> Daily Runner </h4>
-        <h4> What&apos;s Saiful Alam Mukul&apos;s story?</h4>
+        <h4> What&apos;s <span>Saiful Alam Mukul&apos;s</span> story?</h4>
             Mukul, editor of the Daily Runner, a Bengali-language newspaper, was returning to his home in Jessore when he was killed by what police say may have been a small, homemade bomb. He was pronounced dead on arrival at Jessore General Hospital. The Daily Runner was known for its exposés of gang activity, political corruption, and human rights abuses and had published stories criticizing guerrilla activity around Jessore. Mukul halted production of the newspaper in June because of financial difficulties. He wrote a poem for the paper’s final issue expressing his frustration with a society grown complacent toward the problems of crime and corruption. After announcing on August 15 that the Daily Runner would resume publication on September 1, Mukul repeatedly told friends, family, and even police that he feared an attack on him was imminent. Journalists around the country were outraged at his murder. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([23.1665971, 89.2095143], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([23.1665971, 89.2095143], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([23.1665971, 89.2095143]).addTo(map);
         </script>
     </body>
 </html>

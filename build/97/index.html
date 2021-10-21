@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Nasrullah Khan Afridi</h2>
         <h4><strong>Year:</strong> 2011 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Peshawar, Pakistan</h4>
         <h4><strong>Press organization:</strong> Pakistan Television and Mashriq </h4>
-        <h4> What&apos;s Nasrullah Khan Afridi&apos;s story?</h4>
+        <h4> What&apos;s <span>Nasrullah Khan Afridi&apos;s</span> story?</h4>
             Afridi, a reporter for Pakistan Television and the localMashriq newspaper, was killed when his car blew up in the city of Peshawar,according to local and international news reports. An explosive device wasdetonated remotely shortly after he returned to the vehicle, which was parkedin a densely populated shopping area, news reports said.The Pakistan Federal Union of Journalists said Afridi, whowas also the president of the Tribal Union of Journalists, had moved toPeshawar to flee militant groups. In May 2006, CPJ reported, unidentified assailants hadlobbed two hand grenades at Afridi’s house in Bara, the main town of KhyberAgency in the Federally Administered Tribal Areas. Afridi had been the targetof a death threat issued on a pirate radio station run by the Islamic militantorganization Lashkar-e-Islam. The threat came after Afridi reported that theauthorities suspected Lashkar-e-Islam of being responsible for an attack inwhich a paramilitary soldier was injured.The journalist moved to Islamabad after the attack but saidofficials there would not heed his complaints of being under threat. He thenmoved to the wealthy Hayatabad area of Peshawar. But in mid-2007, grenades werelobbed at his home there. No one was injured in that attack.Afridi was a popular, senior figure in the tightly knitjournalist community in the dangerous areas along the Afghan border. Hundredsof people, including colleagues, political leaders, and tribal elders, attendedhis memorial service. No arrests were made in the case.  
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([34.0123846, 71.5787458], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([34.0123846, 71.5787458], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([34.0123846, 71.5787458]).addTo(map);
         </script>
     </body>
 </html>

@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Achyutananda Sahu</h2>
         <h4><strong>Year:</strong> 2018 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Chhattisgarh, India</h4>
         <h4><strong>Press organization:</strong> Doordarshan </h4>
-        <h4> What&apos;s Achyutananda Sahu&apos;s story?</h4>
+        <h4> What&apos;s <span>Achyutananda Sahu&apos;s</span> story?</h4>
             Video journalist Achyutananda Sahu, who worked for the government-run broadcaster Doordarshan, was killed in Chhattisgarh on October 30, 2018, during a firefight between police and a Maoist militant group, according to news reports.At the time of the killing, the journalist and two colleagues from Doordarshan were embedded with the police and covering preparations for elections scheduled for the following month, the reports said. Sahu was on a motorcycle toward the front of the group when the clash, in which two police officers were also killed, took place, according to the Indian Express.Chhattisgarh is one of four Indian states that have been the scene of a Maoist insurgency in the past few decades.According to the police, the media team were caught in the crossfire when Maoists attacked the police. Accounts differed as to whether the attack was related to the upcoming election or a dispute over road construction.Dheeraj Kumar, who was part of the Doordarshan news crew, told The Hindustan Times that the group was ambushed as it headed toward Nilwaya, about 5km (3 miles) from a paramilitary camp in Sameli, a village in the Dantewada district. &#34;I saw my colleague fall in front of me,&#34; Kumar said. &#34;We were planning to cover a newly-built polling station in Nilwaya where people haven’t voted since 1998.&#34;Special director general of police D.M. Awasthi told the media the attack was related to road construction. “Naxals warned about causing harm if the road construction work continued,” he said. Sahu and his team arrived to cover the road construction ahead of the polls when the attack took place, according to Awasthi.The Communist Party of India (Maoist) released a statement taking responsibility for Sahu’s death, according to the Press Trust of India. “It is sad that camera person Achyutananda Sahu was killed in the attack. We had no intention to target media personnel,” Sainath, the secretary of the Dharba division of CPI (Maoist) said in the statement. He also advised journalists not to embed with police when in conflict zones.In response to the killing, Rajyavardhan Rathore, who heads the Ministry of Information and Broadcasting that has responsibility for the station, tweeted, &#34;Stand in solidarity with family of the cameraman, we will take care of his family. We salute all those media persons who go for coverage in such dangerous situations, remember their bravery.&#34; According to NDTV, he ordered compensation of 15,00,000 Indian rupees (US$21,000) to be paid to the journalist’s family. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([21.6637359, 81.8406351], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([21.6637359, 81.8406351], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([21.6637359, 81.8406351]).addTo(map);
         </script>
     </body>
 </html>

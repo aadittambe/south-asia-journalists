@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Chishti Mujahid</h2>
         <h4><strong>Year:</strong> 2008 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Quetta, Pakistan</h4>
         <h4><strong>Press organization:</strong> Akbar-e-Jehan </h4>
-        <h4> What&apos;s Chishti Mujahid&apos;s story?</h4>
+        <h4> What&apos;s <span>Chishti Mujahid&apos;s</span> story?</h4>
             An unidentified assailant shot Mujahid, a veteran columnistand photographer, in the head and chest as he left his house, according to thePakistan Federal Union of Journalists and local news reports. A spokesman forthe banned insurgent group the Baluch Liberation Army claimed responsibilityfor the murder in a phone call to the Quetta Press Club, saying Mujahid was“against” the Baluch cause, local news reports said.Mujahid, an ethnic Punjabi, received several telephonethreats after writing about the killing of Baluch leader Balach Marri inNovember 2007, according to the journalists union. Akbar-e-Jehan, published bythe Jang Media Group, was among the country’s largest Urdu-language weeklymagazines. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([30.1957677, 67.0172447], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([30.1957677, 67.0172447], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([30.1957677, 67.0172447]).addTo(map);
         </script>
     </body>
 </html>

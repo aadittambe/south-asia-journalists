@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Sohail Khan</h2>
         <h4><strong>Year:</strong> 2018 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Criminal Group</h4>
         <h4><strong>Location:</strong> Haripur, Pakistan</h4>
         <h4><strong>Press organization:</strong> K2 Times </h4>
-        <h4> What&apos;s Sohail Khan&apos;s story?</h4>
+        <h4> What&apos;s <span>Sohail Khan&apos;s</span> story?</h4>
             Sohail Khan, a reporter for the Urdu daily K2 Times, was shot and killed while driving in Haripur, Khyber Pakhtunkhwa province, on October 16, 2018.News reports said that Khan received threats shortly after writing a story about the arrest of an alleged drug dealer named Musarrat Iqbal. He filed an application at the district police office requesting protection on the day he was killed, Iqbal Khattak, director of the media watchdog organization Freedom Network, told CPJ. Police had not taken any protective measures, according to the Pakistani TV channel Samaa. CPJ was unable to reach K2 Times for comment via phone.On October 16, the Freedom Network tweeted a photo of the Urdu-language first information report filed on Khan’s killing. Khattak told CPJ that two people listed in the report are Musarrat Iqbal’s sons. The Associated Press reported on October 17 that police identified Ali Sher and Himayun Iqbal, Musarrat Iqbal’s sons, as suspects. They are accused of ambushing Khan’s car and killing him, the report said. A Haripur police official said Khan was killed because of his reporting, according to The Associated Press. On October 24, 2018, police arrested Himayun Iqbal, who they said was trying to flee to Iran via the Chaman border, according to Samaa. Ali Sher had not been apprehended as of late 2018. When CPJ called the district police office in Haripur for comment, the person who answered said he did not know about the case and that no one else was available. Subsequent phone calls to the police office were not answered. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([33.9944889, 72.9331737], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([33.9944889, 72.9331737], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([33.9944889, 72.9331737]).addTo(map);
         </script>
     </body>
 </html>

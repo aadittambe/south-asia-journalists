@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Rehmatullah Abid</h2>
         <h4><strong>Year:</strong> 2012 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> </h4>
         <h4><strong>Location:</strong> Panjgur, Baluchistan, Pakistan</h4>
         <h4><strong>Press organization:</strong> Dunya News TV, Intikhaab </h4>
-        <h4> What&apos;s Rehmatullah Abid&apos;s story?</h4>
+        <h4> What&apos;s <span>Rehmatullah Abid&apos;s</span> story?</h4>
             Unidentified gunmen on a motorcycle killed Abid in a barbershop in Panjgur district, about 375 miles (600 kilometers) from Quetta. Abidhad worked as a general assignment reporter for the Urdu-language Dunya News, anews and current affairs TV channel, for several years and had also worked forthe Urdu-language daily Intikhaab.According to the Pakistan Press Foundation, Abid was shotsix times, once in the head. The PPF also reported that Eesa Tareen, presidentof the Baluchistan Union of Journalists, said Abid’s family was unaware of anypersonal enmities that would have caused his death. Aslam Raisani, chief minister of Baluchistan, issued astatement saying that “hidden hands” were attacking Baluchi journalists to stopthem from working, according to news reports. Abid’s colleagues at the PPF saidthat they believed Abid had been killed because of his reporting. TheBaluchistan Union of Journalists appealed to the local and federal governmentsto address the rising levels of threats to Pakistani journalists. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([26.9616074, 64.1153339], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([26.9616074, 64.1153339], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([26.9616074, 64.1153339]).addTo(map);
         </script>
     </body>
 </html>

@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Chennakeshavalu</h2>
         <h4><strong>Year:</strong> 2021 </h4>
         <h4><strong>Nationality:</strong> </h4>
         <h4><strong>Killed by:</strong> Local Residents,Government Officials</h4>
         <h4><strong>Location:</strong> Andhra Pradesh, India</h4>
         <h4><strong>Press organization:</strong> EV5 </h4>
-        <h4> What&apos;s Chennakeshavalu&apos;s story?</h4>
+        <h4> What&apos;s <span>Chennakeshavalu&apos;s</span> story?</h4>
             On August 8, 2021, in the Kurnool district of the southeastern Indian state of Andhra Pradesh, two men stabbed Chennakeshavalu, a reporter with the privately owned news channel EV5, according to news reports.Chennakeshavalu, who uses one name, died later that day of his injuries, according to those reports, which said that police have arrested the suspects, identified as a police officer, Venkata Subbaiah, and his brother, identified as Nani, for suspected murder.Sudheer Kumar Reddy, the Kurnool district superintendent of police, was quoted in those news reports saying that the suspects invited Chennakeshavalu to speak with them about his reporting on Venkata Subbaiah’s alleged illegal gambling activities and then attacked him, stabbing him multiple times in the back with a screwdriver.In a phone call with CPJ, Reddy confirmed the suspects’ arrests and said that Subbaiah had been dismissed from the police force.CPJ was unable to find contact information for the suspects’ lawyers, or any public statements by the suspects. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([15.9240905, 80.1863809], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([15.9240905, 80.1863809], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([15.9240905, 80.1863809]).addTo(map);
         </script>
     </body>
 </html>

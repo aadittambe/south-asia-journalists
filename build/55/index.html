@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Indika Pathinivasan</h2>
         <h4><strong>Year:</strong> 1999 </h4>
         <h4><strong>Nationality:</strong> Sri Lanka</h4>
         <h4><strong>Killed by:</strong> </h4>
         <h4><strong>Location:</strong> Colombo, Sri Lanka</h4>
         <h4><strong>Press organization:</strong> Maharaja Television Network </h4>
-        <h4> What&apos;s Indika Pathinivasan&apos;s story?</h4>
+        <h4> What&apos;s <span>Indika Pathinivasan&apos;s</span> story?</h4>
             Anura Pathinivasan, a camera assistant for Sri Lanka’s privately owned Maharaja Television Network, and Indika Priyantha, a camera assistant for the state-owned Independent Television Network, were fatally wounded by shrapnel from a suicide bomb aimed at President Chandrika Bandaranaike Kumaratunga at an election rally in Colombo. Five other journalists were injured by the blast, along with Kumaratunga and scores of onlookers.The bomb exploded at around 10 p.m. near a barrier separating journalists, including Pathinivasan and Priyantha, from Kumaratunga and a car that had arrived to pick her up. At least 22 people were killed in the assassination attempt, according to police.Pathinivasan died instantly of shrapnel wounds. Priyantha died later at a Colombo hospital. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([6.9387469, 79.8541134], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([6.9387469, 79.8541134], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([6.9387469, 79.8541134]).addTo(map);
         </script>
     </body>
 </html>

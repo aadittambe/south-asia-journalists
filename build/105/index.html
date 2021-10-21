@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Parvaz Mohammed Sultan</h2>
         <h4><strong>Year:</strong> 2003 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> </h4>
         <h4><strong>Location:</strong> Srinagar, India</h4>
         <h4><strong>Press organization:</strong> News and Feature Alliance </h4>
-        <h4> What&apos;s Parvaz Mohammed Sultan&apos;s story?</h4>
+        <h4> What&apos;s <span>Parvaz Mohammed Sultan&apos;s</span> story?</h4>
             Sultan, editor of the independent newswire service News and FeatureAlliance (NAFA), which is based in Srinagar, the summer capital ofJammu and Kashmir State, was shot dead by an unidentified gunman.Two men entered Sultan’s office at around 5:30 p.m., according to newsreports. After a brief conversation with Sultan, one of the men shothim in the head. The Associated Press (AP) reported that the killerused a pistol with a silencer. No one stopped the assailants fromleaving the premises, which is located in the press enclave in centralSrinagar.Though Sultan was rushed to the hospital, doctors declared thejournalist dead within minutes of his arrival, police told the AP.Sultan, 36, was known as an independent journalist who had worked forseveral local Urdu-language dailies during his career. In addition torunning NAFA, he contributed investigative stories and columns to theUrdu-language newspaper Chattan, one of the oldest newspapers in Kashmir.Journalists working in the disputed territory of Kashmir, which bothIndia and Pakistan claim, have long been vulnerable to attack byvarious parties to the conflict. Sultan’s colleagues told CPJ thatthough they were not aware of any specific threats against thejournalist, wire service agencies such as NAFA are under constantpressure to carry statements issued by competing political and militantgroups.Police blamed the murder on militant groups but have not yet conducteda thorough investigation. No group claimed responsibility for Sultan’smurder, and many of the leading militant organizations, includingHezb-ul Mujahedeen, condemned the murder, as did the All PartiesHurriyat Conference, the main separatist alliance. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([34.0747444, 74.8204443], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([34.0747444, 74.8204443], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([34.0747444, 74.8204443]).addTo(map);
         </script>
     </body>
 </html>

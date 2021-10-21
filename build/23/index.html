@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Azamat Ali Bangash</h2>
         <h4><strong>Year:</strong> 2010 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Orakzai, Pakistan</h4>
         <h4><strong>Press organization:</strong> Samaa TV </h4>
-        <h4> What&apos;s Azamat Ali Bangash&apos;s story?</h4>
+        <h4> What&apos;s <span>Azamat Ali Bangash&apos;s</span> story?</h4>
             Bangash, 34, a cameraman and correspondent, was killed in a suicide bombing while covering food distribution in a refugee camp near Orakzai, in the Federally Administered Tribal Areas near the border with Afghanistan. He was the second Samaa journalist killed in a suicide bombing in two days.As many as 47 refugees from fighting in northwest Pakistan died when a pair of suicide bombers, striking minutes apart, attacked a distribution line, news reports said. The BBC and CNN said the Sunni group Lashkar-e-Jhangvi claimed responsibility for the explosions, which targeted the Shia refugees. The bombing was one of five in northwest Pakistan that took place between April 14 and April 17, 2010.Bangash, who died at a nearby field hospital, was survived by a wife and three children. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([33.666667, 71.0], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([33.666667, 71.0], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([33.666667, 71.0]).addTo(map);
         </script>
     </body>
 </html>

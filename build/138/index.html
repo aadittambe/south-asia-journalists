@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Shamsur Rahman</h2>
         <h4><strong>Year:</strong> 2000 </h4>
         <h4><strong>Nationality:</strong> Bangladesh</h4>
         <h4><strong>Killed by:</strong> Criminal Group</h4>
         <h4><strong>Location:</strong> Jessore, Bangladesh</h4>
         <h4><strong>Press organization:</strong> Janakantha </h4>
-        <h4> What&apos;s Shamsur Rahman&apos;s story?</h4>
+        <h4> What&apos;s <span>Shamsur Rahman&apos;s</span> story?</h4>
             Rahman, a special correspondent for the Bengali-language national daily Janakantha and a frequent contributor to the BBC’s Bengali-language service, was killed at around 8:20 p.m. when two armed men entered his office and fired at his head and chest from point-blank range. The 43-year-old journalist was working alone in his office on Jail Road in central Jessore when the assailants arrived. The gunmen reportedly fled the scene immediately. Rahman was pronounced dead on arrival at Jessore General Hospital. Jessore, which is close to the Indian border with southwestern Bangladesh, is a center for smuggling operations. Rahman regularly covered the activities of criminal gangs and armed political groups in the region. Sources at Janakantha told CPJ that he had periodically received death threats in response to his reporting. Police blamed Rahman’s murder on a smuggler’s gang based in nearby Khulna. A high-profile investigation led to a series of arrests, but all the suspects had been released by year’s end, according to CPJ sources. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([23.1665971, 89.2095143], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([23.1665971, 89.2095143], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([23.1665971, 89.2095143]).addTo(map);
         </script>
     </body>
 </html>

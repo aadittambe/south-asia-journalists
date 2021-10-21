@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Javed Ahmed Mir</h2>
         <h4><strong>Year:</strong> 2008 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> Paramilitary Group</h4>
         <h4><strong>Location:</strong> Srinagar, India</h4>
         <h4><strong>Press organization:</strong> Channel 9 </h4>
-        <h4> What&apos;s Javed Ahmed Mir&apos;s story?</h4>
+        <h4> What&apos;s <span>Javed Ahmed Mir&apos;s</span> story?</h4>
             Security forces shot and killed Mir while he was covering protests during a spate of violence in the northern Indian state of Jammu and Kashmir, according to the BBC and local journalists.A BBC report said the cameraman, who had two other jobs to support his wife and three children, was called from a wedding to cover a growing protest rally on a main road in the state’s summer capital, Srinagar, and was shot in the head while waiting for equipment to arrive from the news channel.Local journalists told CPJ that he worked for the local news station, Channel 9. Amin War, a photographer for the local Daily Tribune, told CPJ by telephone from Srinagar that he witnessed the shooting. He said Mir was working at the time of his death, although he was not carrying a camera, and was among several killed or injured when security forces opened fire on the protesters.The BBC report said that 26 people were killed as police tried to restore order. A transfer of land to a Hindu shrine in June fueled protests in the unstable Muslim majority state, where separatist groups lead an often violent movement for independence for Kashmir, which is also claimed by Pakistan.By spring 2016, no investigation had been conducted into the shooting. According to an independent investigation by the human rights group, the People’s Union for Democratic Rights, when Mir’s family tried to file a First Information Report, police said four witnesses would be needed to corroborate their account that security forces had opened fire on the journalist. CPJ was not able to immediately verify the claim. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([34.0747444, 74.8204443], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([34.0747444, 74.8204443], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([34.0747444, 74.8204443]).addTo(map);
         </script>
     </body>
 </html>

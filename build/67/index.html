@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Karun Misra</h2>
         <h4><strong>Year:</strong> 2016 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> Criminal Group, Local Residents</h4>
         <h4><strong>Location:</strong> Sultanpur, Uttar Pradesh, India</h4>
         <h4><strong>Press organization:</strong> Jansandesh Times </h4>
-        <h4> What&apos;s Karun Misra&apos;s story?</h4>
+        <h4> What&apos;s <span>Karun Misra&apos;s</span> story?</h4>
             Three gunmen on motorcycles shot Misra in Sultanpur district as the journalist was driving to his home in Ambedkar Nagar on the afternoon of February 13, according to local media reports. Misra, who was the Ambedkar Nagar bureau chief of the Hindi daily Jansandesh Times, died from his injuries on the way to the hospital, according to The Hindu.Uttar Pradesh Chief Minister Akhilesh Yadav expressed his “deep concern” about the journalist’s death, and ordered Director-General of Police Javeed Ahmed to form special teams to investigate the case, according to press reports.On February 18, 2016 police arrested five people in connection with Misra’s murder, according to news reports. Inspector General A. Satish Ganesh, of the Lucknow-zone, issued a statement saying that two mining contractors in the area were allegedly upset with Misra’s coverage of illegal mining for his paper. Ganesh named two local mining contractors–Rahul Singh and Pawan Singh–as the suspected masterminds behind Misra’s murder. The pair allegedly paid five locals 100,000 Indian rupees (approximately US$1,500) to kill Misra, according to the police statement. CPJ was unable to determine if they have denied the accusations. Both contractors and three of the five men they allegedly hired, identified as Ajay Singh, Sandeep Singh, and Haider Abbas, were arrested following a joint operation by Sultanpur police and the state’s Special Task Force, an investigative body set up to investigate criminal matters including mafia activities in the state. During questioning, the three men allegedly hired by the contractors confessed to murdering Misra, reports said. Police were still searching for two other suspects, identified as Aman Singh and Mama, who was identified by only one name. CPJ is unable to determine if the suspects have been officially charged or if they are being held in custody.An officer at the Kudwar police station was suspended for not taking adequate measures to address illegal mining in the area, reports said. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([26.24251085, 82.29616932], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([26.24251085, 82.29616932], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([26.24251085, 82.29616932]).addTo(map);
         </script>
     </body>
 </html>

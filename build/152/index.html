@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Sufi Mohammad Khan</h2>
         <h4><strong>Year:</strong> 2000 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> Criminal Group</h4>
         <h4><strong>Location:</strong> Badin, Pakistan</h4>
         <h4><strong>Press organization:</strong> Ummat </h4>
-        <h4> What&apos;s Sufi Mohammad Khan&apos;s story?</h4>
+        <h4> What&apos;s <span>Sufi Mohammad Khan&apos;s</span> story?</h4>
             Khan, an investigative reporter with the Karachi daily Ummat, was shot dead by alleged drug trafficker Ayaz Khatak in the southern district of Badin, near the Indian border. Khan, 38, had a reputation for aggressive reporting on local drug trafficking and organized prostitution. In mid-April, he wrote an article alleging that Khatak, a resident of the village of Shadi Large, Badin District, was involved in drug trafficking. On April 30, Khatak visited Khan’s home, also in Shadi Large, and threatened to kill him, according to the editor of Ummat. Khan, who had received many threats in the past and had been physically assaulted twice in the previous six months, ignored the warning and filed a story on Khatak’s alleged involvement with a local prostitute that ran in the May 2 edition of Ummat. Sometime before noon that day, Khatak and three companions stopped Khan after he left his home by motorcycle. “I told you I would kill you,” Khatak reportedly said before opening fire. As Khan lay dying from multiple gunshot wounds, Khatak and his accomplices fled the scene in a white car. About a 30 minuted after the killing, Khatak surrendered to police in the nearby village of Khoski, and the local press widely covered his confession. Police also suspected the involvement of the powerful Arbab family, which allegedly ran a prostitution ring out of Shadi Large that smuggled women from Punjab Province and sold them across the border in India. After Khan began covering this story, family members tried unsuccessfully to buy his silence. When Khan continued to write critical stories about the Arbabs, they filed a defamation case against him and his newspaper. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([24.6551671, 68.8401509], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([24.6551671, 68.8401509], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([24.6551671, 68.8401509]).addTo(map);
         </script>
     </body>
 </html>

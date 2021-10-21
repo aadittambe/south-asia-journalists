@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Ghulam Rasool</h2>
         <h4><strong>Year:</strong> 2014 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> </h4>
         <h4><strong>Location:</strong> Quetta, Pakistan</h4>
         <h4><strong>Press organization:</strong> Online International News Network </h4>
-        <h4> What&apos;s Ghulam Rasool&apos;s story?</h4>
+        <h4> What&apos;s <span>Ghulam Rasool&apos;s</span> story?</h4>
             Two unidentified gunmen stormed the offices of the independent news agency Online International News Network in Quetta, the capital of Baluchistan province, killing its reporter-in-training, Ghulam Rasool, also known as Abdul Rasul, and the bureau chief Irshad Mastoi. A network employee, accountant Muhammad Younus, was also killed, according to news reports.All three were shot several times, according to police. Rasool and Younus were killed immediately, and Mastoi was rushed to the hospital where he was pronounced dead, reports said. The assailants fled the scene, according to reports.Rasool, who was in his early 20s, was a student in his final year at the media and journalism department of the University of Balochistan Quetta, according to news accounts. He had joined the agency in May 2014 and wrote news reports, but was not assigned to any particular beat. Rasool often accompanied staff journalists on their assignments, his colleagues told CPJ. Prior to working at the agency, Rasool interned with Geo TV, the colleagues said.Baluchistan–Pakistan’s largest province by area and smallest by population–is mired in an insurgency and sectarian strife. Its residents face criminal activity, daily disappearances, and targeted killings, and international journalists are routinely denied access to the province. Local journalists in Baluchistan face pressure from a number of sources: pro-Taliban groups and Pakistani security forces and intelligence agencies, as well as separatists and state-sponsored anti-separatist militant groups, according to CPJ research. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([30.1957677, 67.0172447], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([30.1957677, 67.0172447], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([30.1957677, 67.0172447]).addTo(map);
         </script>
     </body>
 </html>

@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Abdul Hakim Shimul</h2>
         <h4><strong>Year:</strong> 2017 </h4>
         <h4><strong>Nationality:</strong> Bangladesh</h4>
         <h4><strong>Killed by:</strong> Government Officials</h4>
         <h4><strong>Location:</strong> Shahjadpur, Bangladesh</h4>
         <h4><strong>Press organization:</strong> Samakal </h4>
-        <h4> What&apos;s Abdul Hakim Shimul&apos;s story?</h4>
+        <h4> What&apos;s <span>Abdul Hakim Shimul&apos;s</span> story?</h4>
             Abdul Hakim Shimul, a reporter for the Bangladeshi national daily Samakal newspaper, died on February 3, 2017, from gunshot wounds sustained while covering political unrest in the northern Bangladeshi city of Shahjadpur the previous day. He was 42.Violence broke out between rival factions of the ruling Awami League, namely supporters of Halimul Haque Miru, mayor of Shahjadpur, and his opponents from another faction of the party, according to news reports. Witnesses said that Miru opened fire in the confrontation, despite police instructions not to do so, according to media reports. A bullet entered Shimul’s skull after piercing one of his eyes, according to news reports. Shimul was first treated at a local clinic, but succumbed to his injuries on the way to a hospital in the capital Dhaka the following day.Police arrested Miru on February 5 on suspicion of being responsible for Shimul’s death. Miru admitted to firing his gun, but claimed he fired a shot in the air in response to shots fired by his rivals. Police said only Miru’s gun was fired, according to the Bangladeshi news website bdnews24.com.A court on February 6 ordered Miru jailed in connection with Shimul’s death, and said it would decide on the question of bail later. Police sought to hold Miru for at least seven days for questioning, according to news reports.According to media reports, Shimul’s maternal grandmother, Rokeya Begum, died of a stroke when she heard of his death. The journalist left behind a wife and two young children. His colleagues remembered Shimul as “honest journalist.” 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([23.7884856, 90.4237741], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([23.7884856, 90.4237741], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([23.7884856, 90.4237741]).addTo(map);
         </script>
     </body>
 </html>

@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Javed Khan</h2>
         <h4><strong>Year:</strong> 2007 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> </h4>
         <h4><strong>Location:</strong> Islamabad, Pakistan</h4>
         <h4><strong>Press organization:</strong> Markaz and DM Digital TV </h4>
-        <h4> What&apos;s Javed Khan&apos;s story?</h4>
+        <h4> What&apos;s <span>Javed Khan&apos;s</span> story?</h4>
             Khan, a photographer for the Islamabad-based daily Markazand a cameraman for U.K.-based DM Digital TV, was shot in the chest and neckwhile caught in crossfire between government forces and the students of Lal Masjid(Red Mosque) in Islamabad, according to media reports. Four other journalistswere wounded in the clashes.News reports said gunfire had come from both sides in thestandoff. The source of the fatal shots was not immediately clear. Pakistanisecurity forces had surrounded the mosque in an effort to end a months-longstandoff. The mosque, seen as pro-Taliban, had been the center of efforts toremove what leaders saw as undesirable activity such as massage parlors andmusic shops. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([33.6938118, 73.0651511], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([33.6938118, 73.0651511], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([33.6938118, 73.0651511]).addTo(map);
         </script>
     </body>
 </html>

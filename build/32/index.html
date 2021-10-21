@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Dekendra Raj Thapa</h2>
         <h4><strong>Year:</strong> 2004 </h4>
         <h4><strong>Nationality:</strong> Nepal</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Dailekh, Nepal</h4>
         <h4><strong>Press organization:</strong> Radio Nepal </h4>
-        <h4> What&apos;s Dekendra Raj Thapa&apos;s story?</h4>
+        <h4> What&apos;s <span>Dekendra Raj Thapa&apos;s</span> story?</h4>
             In August 2004, rebels in midwestern Nepal’s Dailekh District claimed to have killed Dekendra Raj Thapa, a journalist for state-run Radio Nepal and head of a local drinking water project. Local sources told CPJ that Thapa’s killing was connected to his work as a journalist.After the slaying, local rebel commanders told Thapa’s family that they intended to kill 10 other journalists in neighboring districts, according to local news reports.Members of the Communist Party of Nepal (Maoist) abducted Thapa on June 26, and a rebel commander said on August 16 that they had executed him on August 11, according to local news reports.Maoist rebels posted leaflets in Thapa’s hometown in Dailekh on August 17 “charging” him with 10 counts of crimes against what the rebels refer to as their “people’s regime.” Among other accusations, the rebels accused Thapa of spying for state security forces while using his profession as a cover.Thapa belonged to the Federation of Nepalese Journalists (FNJ) and was an adviser to the local branch of Human Rights and Peace Society, a Nepalese human rights group. A delegation from FNJ met with Maoists in Dailekh to make appeals on Thapa’s behalf before the rebels said they killed him.Journalists took to the streets of the capital, Kathmandu, on August 18 to protest Thapa’s killing, according to local news reports. Local journalists said that his killing and the subsequent death threats were intended to silence the press in the Maoist-controlled midwestern districts of Nepal.In a rare response to journalists’ outrage, Maoist spokesman Krishna Bahadur Mahara wrote a letter to FNJ in September in which he called the murder a breach of policy, promised to investigate the killing and to respect press freedom, and stated that the party had conducted “self-criticism” on the matter.In January 2013, police arrested five suspects in connection with the killing. In December 2014, a local court convicted them all and sentenced them to two years in prison for the abduction and murder, Agence France-Presse reported. Rights activists and the family slammed the sentence as too lenient; four other former Maoists accused in the murder case were on the run, the report said.On December 15, 2020, police arrested Hari Lal Pun, a Maoist, according to the local press freedom organization Freedom Forum. Pun had previously been arrested and convicted for his involvement in the killing, but he had fled before completing the last four months of his term, according to that report.In March 2020, police arrested Bam Bahadur Khadka, one of the four who was on the run at the time of the 2013 sentencing, according to the Freedom Forum. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([28.88506455, 81.69971653], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([28.88506455, 81.69971653], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([28.88506455, 81.69971653]).addTo(map);
         </script>
     </body>
 </html>

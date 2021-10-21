@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Rakesh Sharma</h2>
         <h4><strong>Year:</strong> 2013 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> Criminal Group</h4>
         <h4><strong>Location:</strong> Etawah, Uttar Pradesh, India</h4>
         <h4><strong>Press organization:</strong> Aaj </h4>
-        <h4> What&apos;s Rakesh Sharma&apos;s story?</h4>
+        <h4> What&apos;s <span>Rakesh Sharma&apos;s</span> story?</h4>
             Sharma, 50, was shot by unidentified assailants on a motorcycle in the Bakewar town of the Etawah district in the northern state of Uttar Pradesh, according to news reports citing police. Sharma had left his home after receiving a call from an unknown number, his family told reporters.Sharma a senior reporter for a Hindi-language daily Aaj (Today), specialized in crime reporting in the region, according to reports.Police said they were investigating the attack. Investigators said the killing may have been prompted by “personal enmity,” but did not offer further details, according to The Hoot, a South Asian media watchdog.Local journalists dismissed the claim, saying police had not substantiated their theory or offered any evidence to back it up, and said they believed Sharma had been targeted by a local gambling mafia for a critical report he had published on illegal gambling operations.Sharat Pradhan, senior journalist and Uttar Pradesh Accredited Journalists Association member, told The Hoot that under the ruling Samajwadi Party there had been a rise in mafia and criminal activity in the state, and suggested that Sharma may have been targeted for his critical reporting against local politicians.Rakesh Tiwari, president of the association, told The Hoot that he believed Sharma was targeted for his work.Sharma was killed in the home district of Chief Minister Akhilesh Yadav. Local journalists criticized the minister for what they perceive as a lack of security for journalists working in the minister’s own district.In the weeks surrounding Sharma’s murder, journalists reported several cases of their colleagues, who covered politics, business, and corruption, being beaten or threatened by local politicians and criminals, according to The Wall Street Journal. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([26.71832435, 79.09025375], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([26.71832435, 79.09025375], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([26.71832435, 79.09025375]).addTo(map);
         </script>
     </body>
 </html>

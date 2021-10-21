@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Subramaniyam Sugitharajah</h2>
         <h4><strong>Year:</strong> 2006 </h4>
         <h4><strong>Nationality:</strong> Sri Lanka</h4>
         <h4><strong>Killed by:</strong> Government Officials</h4>
         <h4><strong>Location:</strong> Trincomalee, Sri Lanka</h4>
         <h4><strong>Press organization:</strong> Sudar Oli </h4>
-        <h4> What&apos;s Subramaniyam Sugitharajah&apos;s story?</h4>
+        <h4> What&apos;s <span>Subramaniyam Sugitharajah&apos;s</span> story?</h4>
             An unidentified gunman killed Tamil journalist Sugitharajah as thereporter was on his way to work in the eastern port town of Trincomalee.            Sugitharajah, a part-time reporter for Tamil-language daily Sudar Oli,was killed just weeks after he reported on the January 2 killing offive Tamil students in Trincomalee, according to news Web site TamilNet.Military spokesmen initially said that the men were killed by their owngrenade in a botched attack on the army, but photographs taken bySugitharajah showed that the men had died of gunshot wounds. Thegovernment ordered a probe into the deaths. “Mr.Sugitharajah was a fearless reporter and we believe he was killed todemoralize journalists working in the northeast,” Sudar Oli Managing Director E. Saravanapavam told The Associated Press.            The offices of Sudar Olihad been attacked repeatedly in the preceding months. On August 29,2005, a grenade attack at the printing press killed a security guard.Just days earlier, activists from the People’s Liberation Front (JVP)political party turned over to police a photographer for the newspaperand accused him of spying for the Liberation Tigers of Tamil Eelam(LTTE). The newspaper and its Jaffna-based sister publication Uthayan came under attack by both LTTE and anti-LTTE forces in political violence. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([8.576425, 81.2344952], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([8.576425, 81.2344952], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([8.576425, 81.2344952]).addTo(map);
         </script>
     </body>
 </html>

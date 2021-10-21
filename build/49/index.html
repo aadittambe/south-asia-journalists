@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Gyanendra Khadka</h2>
         <h4><strong>Year:</strong> 2003 </h4>
         <h4><strong>Nationality:</strong> Nepal</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Jyamire, Sindhupalchowk, Nepal</h4>
         <h4><strong>Press organization:</strong> Rastriya Samachar Samiti </h4>
-        <h4> What&apos;s Gyanendra Khadka&apos;s story?</h4>
+        <h4> What&apos;s <span>Gyanendra Khadka&apos;s</span> story?</h4>
             Khadka, 35, a journalist with the state-owned news agency Rastriya Samachar Samiti (RSS), was brutally murdered in Nepal’s eastern Sindhupalchowk District by a group of suspected Maoist rebels.According to RSS, the rebels took Khadka away from a school where he taught part time and led him to a nearby field, where they tied his hands to a pole and slit his throat. No motive is known for his murder, but during Nepal’s 7-year-old civil war, both rebels and government security forces have targeted journalists. Local journalists believe that the rebels killed Khadka because he was a journalist.Khadka is the first journalist to be killed in Nepal since the rebels broke a cease-fire agreement with government forces in August. His murder came amid intensified violence in the country, as well as increased attacks on journalists.Khadka’s murder has outraged the journalistic community in Nepal. A group of at least 30 journalists gathered to peacefully protest the killing on September 11, but police dispersed them and detained them briefly for defying a ban on demonstrations. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([27.8472719, 85.6104209], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([27.8472719, 85.6104209], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([27.8472719, 85.6104209]).addTo(map);
         </script>
     </body>
 </html>

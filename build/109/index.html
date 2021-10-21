@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Prakash Singh Thakuri</h2>
         <h4><strong>Year:</strong> 2007 </h4>
         <h4><strong>Nationality:</strong> Nepal</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Mahendranagar, Nepal</h4>
         <h4><strong>Press organization:</strong> Freelance </h4>
-        <h4> What&apos;s Prakash Singh Thakuri&apos;s story?</h4>
+        <h4> What&apos;s <span>Prakash Singh Thakuri&apos;s</span> story?</h4>
             Armed men believed to be associated with Nepal’s Maoistparty abducted freelance reporter Thakuri from his home in Mahendranagar, a city in Kanchanpur district, at around10 a.m., on July 5, 2007. The journalist’s body was not recovered, but localpolice later classified the investigation as a murder case. Thakuri edited and published the royalist newspaper Aajako Samachar until the king wasforced to cede control of the government in April 2006 after weeks ofpro-democracy demonstrations. He was also a prominent member of the royalistNational Journalists Federation, local newspapers reported.Three days after Thakuri was abducted, a previously unknown groupcalling itself the National Republican Army Nepal claimed in an email that ithad killed the journalist for circulating “propaganda in support of themonarchy,” according to news reports. Police were unable to verify the originof the email, which lacked details such as the time and place of the murder, newsreports said. CPJ classified the case as missing until March 2012, after it conducted a fact-finding mission to Nepal.Thakuri’s wife, Janaki, identified three members of theMaoist’s notoriously aggressive youth branch, the Young Communist League, as beingpart of the group responsible the kidnapping, news reports said.The Maoist party signed a peace agreement in November 2006.After it joined the coalition government as the Unified Communist Party ofNepal (Maoist), leaders stopped the investigation of the three men in2009, arguing that the 2006 peace accord precluded prosecution for politicalcrimes, according to the local press freedom group Freedom Forum. In 2011,Nepal’s Supreme Court reinstated the case, ruling that the accord applied only tocrimes committed before November 2006. The murder case remains open in aKanchanpur court.  
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([26.8635752, 85.9641053], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([26.8635752, 85.9641053], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([26.8635752, 85.9641053]).addTo(map);
         </script>
     </body>
 </html>

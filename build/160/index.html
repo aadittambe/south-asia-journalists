@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Umesh Rajput</h2>
         <h4><strong>Year:</strong> 2011 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> Local Residents</h4>
         <h4><strong>Location:</strong> Raipur district, India</h4>
         <h4><strong>Press organization:</strong> Nai Dunia </h4>
-        <h4> What&apos;s Umesh Rajput&apos;s story?</h4>
+        <h4> What&apos;s <span>Umesh Rajput&apos;s</span> story?</h4>
             Two masked gunmen on motorcycles shot dead Rajput, 33, a reporter with the Hindi-language daily Nai Dunia (New World), outside his home near Raipur district in Chhattisgarh state, according to local news reports.A note found at the scene of murder said, “Khabar chaapna band nahi karoge toh mare jaoge” (If you don’t stop publishing news, you will die), news accounts said.Rajput had frequently written about corruption and exploitation of tribal communities in the region, according to reports.Rajput’s family said a health worker had threatened the journalist two weeks before the shooting in relation to a story about a botched eye procedure at a local health clinic, local news reports said. The patient, a woman who belonged to a local tribal community, later died, according to reports. The story was picked up by other local media outlets.The journalist’s family said he “was killed by a powerful lobby of health professionals who were angered by the slain reporter’s newspaper articles criticizing the district’s health infrastructure,” The Hindu reported. Two years after his death, the family said police had resisted efforts to investigate the murder, and that they had to turn to the courts in demanding an inquiry into Rajput’s death and a report from police on the status of the investigation, the South Asian media watchdog The Hoot reported.Since his murder, police have cited various motives in the murder, including possible Maoists involvement and a personal relationship angle, but local journalists and family have dismissed these, arguing the police has been complicit in protecting the powerful health professionals. Police have been unable to substantiate these alternate motives or provide evidence supporting their claims, The Hoot reported. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([20.916667, 82.0], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([20.916667, 82.0], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([20.916667, 82.0]).addTo(map);
         </script>
     </body>
 </html>

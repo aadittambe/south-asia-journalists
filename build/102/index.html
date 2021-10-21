@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>P. Srinivas Rao</h2>
         <h4><strong>Year:</strong> 1997 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Hyderabad, India</h4>
         <h4><strong>Press organization:</strong> Eenadu Television (E-TV) </h4>
-        <h4> What&apos;s P. Srinivas Rao&apos;s story?</h4>
+        <h4> What&apos;s <span>P. Srinivas Rao&apos;s</span> story?</h4>
             Srinivas Rao and S. Krishna, assistant cameramen for E-TV; Jagadish Babu, a producer for private channel E-TV; Gangadhara Raju, an E-TVcameraman; andRaja Sekhar, an assistant for E-TV, were killed in a car bomb explosionwhile covering the making of a film. As they were leaving the RamaNaidu Studios in Hyderabad, their vehicle caught the brunt of themassive blast, which police said was caused by a remote control carbomb parked by the studio entrance. The television crew’s driver, P.Chandra Sekhar Reddy, was also killed. At least 17 others died and morethan 30 were injured. The attack is believed to have been motivated bypolitical rivalry targeted at the film’s producer, Paritala Ravi, aformer guerrilla leader pardoned in return for his surrender. Ravi isalso a state legislator and member of the governing Telugu Desam party. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([17.360589, 78.4740613], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([17.360589, 78.4740613], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([17.360589, 78.4740613]).addTo(map);
         </script>
     </body>
 </html>

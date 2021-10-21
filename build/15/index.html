@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Anil Mazumdar</h2>
         <h4><strong>Year:</strong> 2009 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> Political Group</h4>
         <h4><strong>Location:</strong> Rajgarh, Assam, India</h4>
         <h4><strong>Press organization:</strong> Aji </h4>
-        <h4> What&apos;s Anil Mazumdar&apos;s story?</h4>
+        <h4> What&apos;s <span>Anil Mazumdar&apos;s</span> story?</h4>
             Unidentified gunmen shot dead Mazumdar, the editor of an Assamese language daily Aji, as he was returning from his office outside his home in Rajgarh. His driver, Ramen Nath, and neighbors rushed him to a hospital, where Mazumdar was declared dead, according to the Telegraph.Mazumdar had been supportive of peace talks between the separatist guerrilla group, United Liberation Front of Asom, which operates in the state, and the government, the Telegraph reported. The paper had taken a stand of supporting negotiations between the government and the militant group, Agence France Presse reported.The same evening that Mazumdar was killed, suspected militants shot dead a leader with the liberation front who was supportive of peace talks, according to reports.“[Mazumdar] was known for his bold and fearless journalism,” Atanu Bhuyan, a fellow journalist, was quoted as saying in news reports. His killing came days after security officials warned journalists in the area that rebel groups could target some of them before an upcoming general election, Reuters reported.Three years after his death, the Gauhati High Court ordered that the Central Bureau of Investigation take over the case, after his widow, Mallika Kalita Majumdar, petitioned the court that she was dissatisfied with the investigation by Assam police, reports said.In January 2016, the CBI filed a closure report naming Bijoy Phukan, a deceased United Liberation Front of Asom militant, as his killer. According to the report, a fortnight after Mazumdar’s killing, Phukan’s body was found with bullet injuries on the bank of the Brahmaputra river in Nalbari district. CPJ was unable to determine if Mazumdar’s family accepted the judgment. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([26.1719842, 91.7712712], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([26.1719842, 91.7712712], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([26.1719842, 91.7712712]).addTo(map);
         </script>
     </body>
 </html>

@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Vikas Ranjan</h2>
         <h4><strong>Year:</strong> 2008 </h4>
         <h4><strong>Nationality:</strong> India</h4>
         <h4><strong>Killed by:</strong> </h4>
         <h4><strong>Location:</strong> Rosera, India</h4>
         <h4><strong>Press organization:</strong> Hindustan </h4>
-        <h4> What&apos;s Vikas Ranjan&apos;s story?</h4>
+        <h4> What&apos;s <span>Vikas Ranjan&apos;s</span> story?</h4>
             Ranjan, a correspondent for the Hindi-language daily Hindustan, was shot in the town of Rosera in the Samastipur district of northern Bihar state, according to Alok Mohit, news editor of the English-language sister paper Hindustan Times, who spoke with CPJ by telephone.Three men on motorbikes fired several shots at Ranjan as he left his office for the evening, according to local news reports. He was declared dead on arrival at the local hospital.Mohit, who had spoken with colleagues in Samastipur, told CPJ that Ranjan wrote about crime and corruption as a part-time correspondent for Hindustan, and that he had been receiving threats for some time. Three of his recent reports on counterfeit merchandise and stolen goods trafficking had sparked official inquiries, according to Mohit. Police were investigating the murder, according to news reports.A First Information Report said two unnamed people and two alleged conspirators, Hariom Lal and Vinod Deo, along with an alleged shooter named Pinku Kumar, were involved in the killing, reports said. A month later, police arrested Krishna Yadav, for allegedly being a hired killer. In 2009, Lal and Deo filed a petition before the Patna High Court seeking bail, in which they said there were only allegations that they had conspired to kill the journalist by paying a ‘supari’ (contract) to the alleged gunman, Kumar, reports said. In April 2010, the Patna High Court rejected their plea and ordered them into custody, according to reports. 
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([25.7798366, 86.04254408], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([25.7798366, 86.04254408], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([25.7798366, 86.04254408]).addTo(map);
         </script>
     </body>
 </html>

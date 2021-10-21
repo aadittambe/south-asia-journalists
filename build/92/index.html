@@ -8,27 +8,40 @@
     </head>
     <body>
         <div id="map" style="width:100%; height:300px;"></div>
+        <h2>Mushtaq Khand</h2>
         <h4><strong>Year:</strong> 2012 </h4>
         <h4><strong>Nationality:</strong> Pakistan</h4>
         <h4><strong>Killed by:</strong> </h4>
         <h4><strong>Location:</strong> Khairpur, Pakistan</h4>
         <h4><strong>Press organization:</strong> Dharti Television Network and Mehran </h4>
-        <h4> What&apos;s Mushtaq Khand&apos;s story?</h4>
+        <h4> What&apos;s <span>Mushtaq Khand&apos;s</span> story?</h4>
             Khand, 35, was among six people killed when gunmen openedfire on a Pakistan People’s Party (PPP) rally in Khairpur in Sindh province. A10-year veteran journalist, Khand was a reporter for Dharti Television Networkand had been the president of the Khairpur Press Club for five years. He hadalso worked for the Sindhi newspaper Mehran in Hyderabad.Police conducted overnight raids after the shooting andarrested 10 unidentified suspects, news reports said. News accounts reporteddifferent motives for the shooting. Investigators first blamed a family feudfor the attack; Geo TV reported the gunfire erupted after an argument betweentwo rival groups at the rally.Khand was survived by two wives and several children. Afterhis funeral in his home village near Khairpur, his colleagues and friendsdemonstrated in front of the Khairpur Press Club, protesting against thegovernment for failing to protect its citizens.  
+        <a href="../"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([27.5151658, 68.0535054], 12);
-            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            var osmLayer = new L.TileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3YxMXNzNjI3c2RhMnFxNnFqajZqdnZwIn0.a9gwkXW78sxu51NyWADROA', {
+                id: 'mapbox/light-v10',
+                maxZoom: 12,
+                minZoom: 4,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             });
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
             map.addLayer(osmLayer);
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconSize: [24, 24]
-                }
-            });
-            var marker = L.marker([27.5151658, 68.0535054], {icon: new blackIcon()}).addTo(map);
+            // var blackIcon = L.Icon.extend({
+            //     options: {
+            //         iconSize: [24, 24]
+            //     }
+            // });
+            var marker = L.marker([27.5151658, 68.0535054]).addTo(map);
         </script>
     </body>
 </html>
