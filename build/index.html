@@ -4675,7 +4675,7 @@
                     from, to;
 
                 for (var i = 0; i < categories.length; i++) {
-                    console.log(getColor(categories[i]))
+                    // console.log(getColor(categories[i]))
                     div.innerHTML +=
                         labels.push(
                             '<i style="background:' + getColor(categories[i]) + '"></i> ' +
@@ -4689,7 +4689,6 @@
             legend.addTo(map);
             var dataLayer = L.geoJson(data, {
                     pointToLayer: function(feature, latlng){
-                        // (console.log(feature.properties.typeOfDeath))
                         if (feature.properties.typeOfDeath == "Murder"){
                             return L.circleMarker(latlng, geojsonMarkerMurder);
                         } else if(feature.properties.typeOfDeath == "Dangerous Assignment"){
@@ -4698,7 +4697,7 @@
                             return L.circleMarker(latlng, geojsonMarkerCrossfire); 
                         }          return L.circleMarker(latlng, geojsonMarkerDangerous);
                     },
-	                onEachFeature: function(feature, layer) {
+	                onEachFeature: function(feature, layer, latlng) {
 	                	layer.on('click', function(event) {
                             $('html').click(function(e) {   
                             // console.log(e.target)
