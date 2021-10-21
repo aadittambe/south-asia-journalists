@@ -119,12 +119,6 @@
                 opacity: 1,
                 fillOpacity: 0.8
             };  
-            var blackIcon = L.Icon.extend({
-                options: {
-                    iconUrl: "{{ url_for('static', filename='marker-24.png') }}",
-                    iconSize: [24, 24]
-                }
-            });
             function getColor(d) {
     // console.log(d)
                 return d == "Dangerous Assignment" ? '#168FFF' :
