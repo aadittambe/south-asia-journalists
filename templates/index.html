@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+        <h1>Journalists <span>killed</span> in South Asia (1992-present)</h1>
+        <h3 class = byline>By Aadit Tambe</h3>
+        <hr>
+
+        <p class="update">Data current as of Oct. 20, 2021</p>
+
+        <p><span>167 journalists </span> have been killed in South Asian countries &mdash; which include Bangladesh, Bhutan, India, Nepal, Pakistan, Sri Lanka and the Maldives &mdash; since 1992, according to the <a href="https://cpj.org/">Committee to Protect Journalists</a>.</p>
+        
+        <div id="map" style="width:100%; height:400px;"></div>
+        
+        <div id="info"></div>
+        
+        <table border=1 cellpadding=7>
+            <tr>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Nationality</th>
+                <th>Death cause</th>
+                <th>Job title</th>
+                <th>Organization</th>
+                <th>Location</th>
+            </tr>
+        {% for obj in object_list %}
+            <tr>
+                <td><a href="{{ obj.id }}/">{{ obj.fullName }}</a></td>
+                <td>{{ obj.year }}</td>
+                <td>{{ obj.primaryNationality }}</td>
+                <td>{{ obj.typeOfDeath }}</td>
+                <td>{{ obj.employedAs }}</td>
+                <td>{{ obj.organizations }}</td>
+                <td>{{ obj.city_country }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+
+        <p class="update">Methodology and sources</p>
+        <p>This is my first news applications developed after completing the <a href="https://first-news-app.readthedocs.io/en/latest/#">First News App</a> tutorial. I wrote a web scraper to collect data from the <a href="#">Committee to Protect Journalists</a> website to obtain biographical descriptions of each journalist's death. Using the GeoPy package, I converted locations to geographical coordinates &mdash; after cleaning and analyzing the data in pandas.</p>
+        <p>In addition to the First News App tutorial, thank you to the following resources for inspiration:</p>
+        <ul>
+            <li><a href="https://cpj.org/2021/09/indian-finance-authorities-raid-offices-of-newslaundry-and-newsclick-websites">Indian finance authorities raid offices of Newslaundry and Newsclick websites</a></li>
+            <li><a href="https://theprint.in/world/journalists-killed-in-retaliation-for-their-work-globally-doubles-this-year-to-21-report/571634/">Journalists killed ‘in retaliation for their work’ globally doubles this year to 21 — Report</a></li>
+            <li><a href="https://cpj.org/reports/2020/12/murders-journalists-more-than-doubled-killed/">Murders of journalists more than double worldwide
+            </a></li>
+        </ul>
+        <p></p>
+
+        <p></p>
+
+        <div class="footer">
+            <p style="">© Handmade by Aadit Tambe | 2021</p>
+          </div>
+        <script type="text/javascript">
+           $(document).ready(function() {	
+            
+            $('#info').css('display', 'none')
+
+            var map = L.map('map').setView([20.0439549,78.9543129], 4);
+            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            });
+            map.addLayer(osmLayer);
+            var data = {
+              "type": "FeatureCollection",
+              "features": [
+                {% for obj in object_list %}
+                {
+                  "type": "Feature",
+                  "properties": {
+                    "fullName": "{{ obj.fullName }}",
+                    "sourcesOfFire":"{{ obj.sourcesOfFire}}",
+                    "year":"{{obj.year}}",
+                    "id": "{{ obj.id}}",
+                    "desc": "{{ obj.desc_clean}}",
+                    "typeOfDeath": "{{ obj.typeOfDeath }}",
+                    "location": "{{ obj.city_country }}"
+                  },
+                  "geometry": {
+                    "type": "Point",
+                    "coordinates": [{{ obj.lon }}, {{ obj.lat }}]
+                  }
+                }{% if not loop.last %},{% endif %}
+                {% endfor %}
+              ]
+            };
+            var geojsonMarkerDangerous = {
+                radius: 6,
+                fillColor: "#168FFF",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
+            var geojsonMarkerCrossfire = {
+                radius: 6,
+                fillColor: "#17cb49",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
+            var geojsonMarkerMurder = {
+                radius: 6,
+                fillColor: "#f74141",
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };  
+            var blackIcon = L.Icon.extend({
+                options: {
+                    iconUrl: "{{ url_for('static', filename='marker-24.png') }}",
+                    iconSize: [24, 24]
+                }
+            });
+            function getColor(d) {
+    // console.log(d)
+                return d == "Dangerous Assignment" ? '#168FFF' :
+                    d == "Crossfire" ? '#17cb49' :
+                        d == "Murder" ? '#f74141' :
+                                '#666';
+            }
+            var legend = L.control({ position: 'bottomright' });
+
+            legend.onAdd = function (map) {
+
+                var div = L.DomUtil.create('div', 'info legend'),
+                    labels = [],
+                    categories = ["Dangerous Assignment", "Crossfire", "Murder",],
+                    from, to;
+
+                for (var i = 0; i < categories.length; i++) {
+                    console.log(getColor(categories[i]))
+                    div.innerHTML +=
+                        labels.push(
+                            '<i style="background:' + getColor(categories[i]) + '"></i> ' +
+                            (categories[i] ? categories[i] : '+'));
+                }
+
+                div.innerHTML = labels.join('<br>');
+                return div;
+            };
+
+            legend.addTo(map);
+            var dataLayer = L.geoJson(data, {
+                    pointToLayer: function(feature, latlng){
+                        // (console.log(feature.properties.typeOfDeath))
+                        if (feature.properties.typeOfDeath == "Murder"){
+                            return L.circleMarker(latlng, geojsonMarkerMurder);
+                        } else if(feature.properties.typeOfDeath == "Dangerous Assignment"){
+                            return L.circleMarker(latlng, geojsonMarkerDangerous);
+                        } else{
+                            return L.circleMarker(latlng, geojsonMarkerCrossfire); 
+                        }          return L.circleMarker(latlng, geojsonMarkerDangerous);
+                    },
+	                onEachFeature: function(feature, layer) {
+
+	                	//When marker is clicked, show info panel on the side
+	                	layer.on('click', function(event) {
+                            $('html').click(function(e) {   
+                            if( !$(e.target).hasClass("leaflet-interactive") )
+                            {   
+                                $('#info').css('display', 'none')
+                                $('#map').css('width', '100%');
+                            }
+                            });    
+	                		// $('#map').css('width', '75%');
+	                		$('#info').css('display', 'block')
+	                				.html('<h2>'+ '<span> '+ feature.properties.fullName + "&apos;s </span> story" + '</h2>' + feature.properties.desc);
+                            
+	                	});
+                        // console.log(feature.properties)
+	                	//Info shown on map popup
+	                	layer.bindPopup('<strong>' + feature.properties.fullName + '</strong>' + '  was killed in '+feature.properties.location+' in '+feature.properties.year + '.');
+	                }
+	            });
+            // console.log(dataLayer)
+; 
+            // var dataLayer = L.geoJson(data, {
+            //     pointToLayer: function (feature, latlng) {
+            //         layer.on('click', function(event) {
+	        //         		$('#map').css('width', '75%');
+	        //         		$('#info').css('display', 'block')
+	        //         				.animate({'width': '20%'}, '1000')
+	        //         				.html(feature.properties.report);
+	        //         	});
+            //         // return L.marker(latlng, {icon: new blackIcon()});
+            //     // onEachFeature: function(feature, layer) {
+            //         layer.bindPopup(
+            //             '<a href="' + feature.properties.id + '/">' +
+            //                 feature.properties.fullName +
+            //             '</a>'
+            //         );
+            //     }
+            // });
+            map.addLayer(dataLayer);
+        });
+        </script>
+    </body>
+</html>
