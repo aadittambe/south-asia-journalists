@@ -13,6 +13,12 @@
             "style": ""
         },
         {
+            "aifont": "Roboto-Bold",
+            "family": "Roboto",
+            "weight": "800",
+            "style": ""
+        },
+        {
             "aifont": "SourceSerifRoman-Regular",
             "family": "Source Serif Pro",
             "weight": "400",
