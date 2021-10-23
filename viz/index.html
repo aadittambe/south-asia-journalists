@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aadit Tambe">
+    <title>Graphic title</title>
+    <style>
+        #container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            padding-top: 10px;
+            padding-right: 20px;
+            padding-bottom: 10px;
+            border-left: 1px solid black;
+            border-bottom: 14px solid black;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            box-shadow: 5px 5px 10px gainsboro;
+            min-width: 300px;
+            max-width: 790px;
+            /* min-height: 800px; */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media only screen and (max-width: 600px) {
+            /* optional media queries */
+        }
+
+        @media only screen and (max-width: 450px) {
+
+            /* media query for h1 */
+            h1 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- this is the resizer function, don't change -->
+    <script type="text/javascript">
+        (function () {
+            // only want one resizer on the page
+            if (document.documentElement.className.indexOf("g-resizer-v3-init") > -1) return;
+            document.documentElement.className += " g-resizer-v3-init";
+            // require IE9+
+            if (!("querySelector" in document)) return;
+            function resizer() {
+                var elements = Array.prototype.slice.call(document.querySelectorAll(".g-artboard[data-min-width]")),
+                    widthById = {};
+                elements.forEach(function (el) {
+                    var parent = el.parentNode,
+                        width = widthById[parent.id] || parent.getBoundingClientRect().width,
+                        minwidth = el.getAttribute("data-min-width"),
+                        maxwidth = el.getAttribute("data-max-width");
+                    widthById[parent.id] = width;
+
+                    if (+minwidth <= width && (+maxwidth >= width || maxwidth === null)) {
+                        el.style.display = "block";
+                    } else {
+                        el.style.display = "none";
+                    }
+                });
+                try {
+                    if (window.parent && window.parent.$) {
+                        window.parent.$("body").trigger("resizedcontent", [window]);
+                    }
+                    if (window.require) {
+                        require(['foundation/main'], function () {
+                            require(['shared/interactive/instances/app-communicator'], function (AppCommunicator) {
+                                AppCommunicator.triggerResize();
+                            });
+                        });
+                    }
+                } catch (e) { console.log(e); }
+            }
+
+            document.addEventListener('DOMContentLoaded', resizer);
+            // feel free to replace throttle with _.throttle, if available
+            window.addEventListener('resize', throttle(resizer, 200));
+
+            function throttle(func, wait) {
+                // from underscore.js
+                var _now = Date.now || function () { return new Date().getTime(); },
+                    context, args, result, timeout = null, previous = 0;
+                var later = function () {
+                    previous = _now();
+                    timeout = null;
+                    result = func.apply(context, args);
+                    if (!timeout) context = args = null;
+                };
+                return function () {
+                    var now = _now(), remaining = wait - (now - previous);
+                    context = this;
+                    args = arguments;
+                    if (remaining <= 0 || remaining > wait) {
+                        if (timeout) {
+                            clearTimeout(timeout);
+                            timeout = null;
+                        }
+                        previous = now;
+                        result = func.apply(context, args);
+                        if (!timeout) context = args = null;
+                    } else if (!timeout && options.trailing !== false) {
+                        timeout = setTimeout(later, remaining);
+                    }
+                    return result;
+                };
+            }
+
+
+        })();
+    </script>
+
+<style media="screen,print">
+	#g-viz-box ,
+	#g-viz-box .g-artboard {
+		margin:0 auto;
+	}
+	#g-viz-box p {
+		margin:0;
+	}
+	#g-viz-box .g-aiAbs {
+		position:absolute;
+	}
+	#g-viz-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	}
+	#g-viz-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	}
+	#g-viz-box .g-aiPointText p { white-space: nowrap; }
+	#g-viz-big {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-viz-big p {
+		font-family:Roboto;
+		font-weight:500;
+		line-height:14px;
+		height:auto;
+		filter:alpha(opacity=100);
+		-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+		opacity:1;
+		letter-spacing:0em;
+		font-size:12px;
+		text-align:left;
+		color:rgb(170,170,170);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-viz-big .g-pstyle0 {
+		font-weight:600;
+		line-height:16px;
+		height:16px;
+		font-size:13px;
+		color:rgb(68,68,68);
+	}
+	#g-viz-big .g-pstyle1 {
+		height:14px;
+	}
+	#g-viz-big .g-pstyle2 {
+		color:rgb(68,68,68);
+	}
+	#g-viz-medium {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-viz-medium p {
+		font-family:Roboto;
+		font-weight:500;
+		line-height:13px;
+		height:auto;
+		filter:alpha(opacity=100);
+		-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+		opacity:1;
+		letter-spacing:0em;
+		font-size:11px;
+		text-align:left;
+		color:rgb(170,170,170);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-viz-medium .g-pstyle0 {
+		font-weight:600;
+		line-height:14px;
+		height:14px;
+		font-size:12px;
+		color:rgb(68,68,68);
+	}
+	#g-viz-medium .g-pstyle1 {
+		height:13px;
+	}
+	#g-viz-medium .g-pstyle2 {
+		color:rgb(68,68,68);
+	}
+	#g-viz-small {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-viz-small p {
+		font-family:Roboto;
+		font-weight:500;
+		line-height:12px;
+		height:auto;
+		filter:alpha(opacity=100);
+		-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+		opacity:1;
+		letter-spacing:0em;
+		font-size:10px;
+		text-align:left;
+		color:rgb(170,170,170);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-viz-small .g-pstyle0 {
+		font-weight:600;
+		line-height:13px;
+		height:13px;
+		font-size:11px;
+		color:rgb(68,68,68);
+	}
+	#g-viz-small .g-pstyle1 {
+		height:12px;
+	}
+	#g-viz-small .g-pstyle2 {
+		font-weight:600;
+		line-height:14px;
+		height:14px;
+		font-size:11px;
+		color:rgb(68,68,68);
+	}
+	#g-viz-small .g-pstyle3 {
+		line-height:13px;
+		font-size:11px;
+		color:rgb(68,68,68);
+	}
+
+</style>
+
+    <div id="container">
+        <!-- ai2html html goes here -->
+        <div id="g-viz-box" class="ai2html">
+
+            <!-- Artboard: big -->
+            <div id="g-viz-big" class="g-artboard" style="width:968px; height:578px;" data-aspect-ratio="1.675" data-min-width="968">
+        <div style=""></div>
+                <img id="g-viz-big-img" class="g-aiImg" alt="" src="viz-big.jpg"/>
+                <div id="g-ai0-1" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:6.8893%;margin-top:-8.8px;left:29.7681%;width:51px;">
+                    <p class="g-pstyle0">India</p>
+                </div>
+                <div id="g-ai0-2" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:6.8893%;margin-top:-8.8px;left:66.0201%;width:73px;">
+                    <p class="g-pstyle0">Pakistan</p>
+                </div>
+                <div id="g-ai0-3" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:9.7904%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai0-4" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:9.7904%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai0-5" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.5966%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai0-6" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.5966%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai0-7" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:17.2298%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai0-8" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:17.2298%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai0-9" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:21.0361%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai0-10" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:21.0361%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai0-11" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.8423%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai0-12" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.8423%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai0-13" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:12.8627%;width:48px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai0-14" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:22.6292%;width:48px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai0-15" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:32.3926%;width:48px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai0-16" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:43.2402%;width:48px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai0-17" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:52.1836%;width:48px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai0-18" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:55.4391%;width:48px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai0-19" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:61.9501%;width:48px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai0-20" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:66.2897%;width:48px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai0-21" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:71.7135%;width:48px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai0-22" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:77.1373%;width:48px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai0-23" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:82.5611%;width:48px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai0-24" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:16.1183%;width:48px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai0-25" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:26.9688%;width:48px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai0-26" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.1295%;margin-top:-7.6px;left:37.8164%;width:48px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai0-27" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:35.9551%;margin-top:-8.8px;left:27.85%;width:90px;">
+                    <p class="g-pstyle0">Bangladesh</p>
+                </div>
+                <div id="g-ai0-28" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:35.9551%;margin-top:-8.8px;left:66.0201%;width:76px;">
+                    <p class="g-pstyle0">Sri Lanka</p>
+                </div>
+                <div id="g-ai0-29" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:38.8561%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai0-30" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:38.8561%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai0-31" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.6623%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai0-32" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.6623%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai0-33" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:46.2956%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai0-34" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:46.2956%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai0-35" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:50.1018%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai0-36" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:50.1018%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai0-37" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.908%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai0-38" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.908%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai0-39" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:12.8375%;width:48px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai0-40" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:22.6039%;width:48px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai0-41" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:32.3674%;width:48px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai0-42" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:43.215%;width:48px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai0-43" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:52.1585%;width:48px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai0-44" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:55.4139%;width:48px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai0-45" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:61.9249%;width:48px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai0-46" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:66.2645%;width:48px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai0-47" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:71.6883%;width:48px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai0-48" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:77.1121%;width:48px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai0-49" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:82.5359%;width:48px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai0-50" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:16.093%;width:48px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai0-51" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:26.9435%;width:48px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai0-52" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0222%;margin-top:-7.6px;left:37.7912%;width:48px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai0-53" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:65.0208%;margin-top:-8.8px;left:29.6722%;width:56px;">
+                    <p class="g-pstyle0">Nepal</p>
+                </div>
+                <div id="g-ai0-54" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:65.0208%;margin-top:-8.8px;left:66.0201%;width:74px;">
+                    <p class="g-pstyle0">Maldives</p>
+                </div>
+                <div id="g-ai0-55" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:67.9219%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai0-56" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:67.9219%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai0-57" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:71.7281%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai0-58" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:71.7281%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai0-59" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:75.3613%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai0-60" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:75.3613%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai0-61" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:79.1675%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai0-62" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:79.1675%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai0-63" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:82.9738%;margin-top:-7.6px;left:12.5016%;width:29px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai0-64" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:82.9738%;margin-top:-7.6px;left:50.6717%;width:29px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai0-65" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:12.8375%;width:48px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai0-66" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:16.093%;width:48px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai0-67" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:22.6039%;width:48px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai0-68" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:26.9435%;width:48px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai0-69" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:32.3674%;width:48px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai0-70" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:37.7912%;width:48px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai0-71" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:43.215%;width:48px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai0-72" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:52.1585%;width:48px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai0-73" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:55.4139%;width:48px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai0-74" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:61.9249%;width:48px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai0-75" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:66.2645%;width:48px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai0-76" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:71.6883%;width:48px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai0-77" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:77.1121%;width:48px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai0-78" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.088%;margin-top:-7.6px;left:82.5359%;width:48px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai0-79" class="g-Layer_1 g-aiAbs" style="top:91.5225%;left:45.0288%;width:41.0124%;">
+                    <p class="g-pstyle2">Source: Analysis of data collected by the Committee to Protect Journalists</p>
+                </div>
+            </div>
+        
+            <!-- Artboard: medium -->
+            <div id="g-viz-medium" class="g-artboard" style="width:768px; height:520px;" data-aspect-ratio="1.477" data-min-width="768" data-max-width="967">
+        <div style=""></div>
+                <img id="g-viz-medium-img" class="g-aiImg" alt="" src="viz-medium.jpg"/>
+                <div id="g-ai1-1" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:2.4481%;margin-top:-7.7px;left:26.4786%;width:48px;">
+                    <p class="g-pstyle0">India</p>
+                </div>
+                <div id="g-ai1-2" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:2.4481%;margin-top:-7.7px;left:68.4872%;width:69px;">
+                    <p class="g-pstyle0">Pakistan</p>
+                </div>
+                <div id="g-ai1-3" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:5.3956%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai1-4" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:5.3956%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai1-5" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:9.2418%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai1-6" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:9.2418%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai1-7" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.0879%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai1-8" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.0879%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai1-9" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:16.9341%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai1-10" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:16.9341%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai1-11" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:20.7802%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai1-12" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:20.7802%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai1-13" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:6.8888%;width:46px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai1-14" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:18.2062%;width:46px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai1-15" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:29.52%;width:46px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai1-16" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:42.0901%;width:46px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai1-17" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:52.4537%;width:46px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai1-18" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:56.2261%;width:46px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai1-19" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:63.7711%;width:46px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai1-20" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:68.7996%;width:46px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai1-21" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:75.0847%;width:46px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai1-22" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:81.3698%;width:46px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai1-23" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:87.6549%;width:46px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai1-24" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:10.6613%;width:46px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai1-25" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:23.2349%;width:46px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai1-26" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:24.2418%;margin-top:-7.1px;left:35.8049%;width:46px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai1-27" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:32.2558%;margin-top:-7.7px;left:24.2559%;width:85px;">
+                    <p class="g-pstyle0">Bangladesh</p>
+                </div>
+                <div id="g-ai1-28" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:32.2558%;margin-top:-7.7px;left:68.4872%;width:72px;">
+                    <p class="g-pstyle0">Sri Lanka</p>
+                </div>
+                <div id="g-ai1-29" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:35.011%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai1-30" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:35.011%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai1-31" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:38.8571%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai1-32" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:38.8571%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai1-33" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.7033%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai1-34" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.7033%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai1-35" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:46.5494%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai1-36" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:46.5494%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai1-37" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:50.3956%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai1-38" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:50.3956%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai1-39" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:6.8595%;width:46px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai1-40" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:18.1768%;width:46px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai1-41" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:29.4907%;width:46px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai1-42" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:42.0609%;width:46px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai1-43" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:52.4246%;width:46px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai1-44" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:56.197%;width:46px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai1-45" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:63.7418%;width:46px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai1-46" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:68.7705%;width:46px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai1-47" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:75.0554%;width:46px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai1-48" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:81.3407%;width:46px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai1-49" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:87.6256%;width:46px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai1-50" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:10.632%;width:46px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai1-51" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:23.2055%;width:46px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai1-52" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.6648%;margin-top:-7.1px;left:35.7757%;width:46px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai1-53" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:61.8712%;margin-top:-7.7px;left:26.3675%;width:53px;">
+                    <p class="g-pstyle0">Nepal</p>
+                </div>
+                <div id="g-ai1-54" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:61.8712%;margin-top:-7.7px;left:68.4872%;width:70px;">
+                    <p class="g-pstyle0">Maldives</p>
+                </div>
+                <div id="g-ai1-55" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:64.8187%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai1-56" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:64.8187%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai1-57" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:68.6648%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai1-58" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:68.6648%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai1-59" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:72.511%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai1-60" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:72.511%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai1-61" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:76.3571%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai1-62" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:76.3571%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai1-63" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:80.2033%;margin-top:-7.1px;left:6.4704%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai1-64" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:80.2033%;margin-top:-7.1px;left:50.7016%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai1-65" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:6.8595%;width:46px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai1-66" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:10.632%;width:46px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai1-67" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:18.1768%;width:46px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai1-68" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:23.2055%;width:46px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai1-69" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:29.4907%;width:46px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai1-70" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:35.7757%;width:46px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai1-71" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:42.0609%;width:46px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai1-72" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:52.4246%;width:46px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai1-73" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:56.197%;width:46px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai1-74" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:63.7418%;width:46px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai1-75" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:68.7705%;width:46px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai1-76" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:75.0554%;width:46px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai1-77" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:81.3407%;width:46px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai1-78" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:83.2802%;margin-top:-7.1px;left:87.6256%;width:46px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai1-79" class="g-Layer_1 g-aiAbs" style="top:88.8462%;left:44.1626%;width:47.526%;">
+                    <p class="g-pstyle2">Source: Analysis of data collected by the Committee to Protect Journalists</p>
+                </div>
+            </div>
+        
+            <!-- Artboard: small -->
+            <div id="g-viz-small" class="g-artboard" style="max-width: 320px;max-height: 900px" data-aspect-ratio="0.356" data-min-width="0" data-max-width="767">
+        <div style="padding: 0 0 281.25% 0;"></div>
+                <img id="g-viz-small-img" class="g-aiImg" alt="" src="viz-small.jpg"/>
+                <div id="g-ai2-1" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:2.1452%;margin-top:-7.3px;left:48.6383%;width:47px;">
+                    <p class="g-pstyle0">India</p>
+                </div>
+                <div id="g-ai2-2" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:3.7418%;margin-top:-6.7px;left:3.9563%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai2-3" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:5.7418%;margin-top:-6.7px;left:3.9563%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai2-4" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:7.8529%;margin-top:-6.7px;left:3.9563%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai2-5" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:9.964%;margin-top:-6.7px;left:3.9563%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai2-6" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:11.964%;margin-top:-6.7px;left:3.9563%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai2-7" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.8529%;margin-top:-6.7px;left:4.8972%;width:45px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai2-8" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.8529%;margin-top:-6.7px;left:30.3476%;width:45px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai2-9" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.8529%;margin-top:-6.7px;left:55.7895%;width:45px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai2-10" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.8529%;margin-top:-6.7px;left:84.0573%;width:45px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai2-11" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.8529%;margin-top:-6.7px;left:13.381%;width:45px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai2-12" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.8529%;margin-top:-6.7px;left:41.6562%;width:45px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai2-13" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:13.8529%;margin-top:-6.7px;left:69.9234%;width:45px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai2-14" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:15.6521%;margin-top:-7.9px;left:43.8303%;width:66px;">
+                    <p class="g-pstyle2">Pakistan</p>
+                </div>
+                <div id="g-ai2-15" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:17.1924%;margin-top:-6.7px;left:3.4372%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai2-16" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:19.3035%;margin-top:-6.7px;left:3.4372%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai2-17" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:21.4146%;margin-top:-6.7px;left:3.4372%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai2-18" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:23.5257%;margin-top:-6.7px;left:3.4372%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai2-19" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:25.6369%;margin-top:-6.7px;left:3.4372%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai2-20" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:27.5257%;margin-top:-6.7px;left:7.4164%;width:45px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai2-21" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:27.5257%;margin-top:-6.7px;left:15.9842%;width:45px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai2-22" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:27.5257%;margin-top:-6.7px;left:33.1189%;width:45px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai2-23" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:27.5257%;margin-top:-6.7px;left:44.5398%;width:45px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai2-24" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:27.5257%;margin-top:-6.7px;left:58.8138%;width:45px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai2-25" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:27.5257%;margin-top:-6.7px;left:73.0878%;width:45px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai2-26" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:27.5257%;margin-top:-6.7px;left:87.3615%;width:45px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai2-27" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:31.3155%;margin-top:-7.8px;left:42.1167%;width:81px;">
+                    <p class="g-pstyle2">Bangladesh</p>
+                </div>
+                <div id="g-ai2-28" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:32.8562%;margin-top:-6.7px;left:3.4705%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai2-29" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:34.9673%;margin-top:-6.7px;left:3.4705%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai2-30" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:36.9673%;margin-top:-6.7px;left:3.4705%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai2-31" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:39.0784%;margin-top:-6.7px;left:3.4705%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai2-32" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:41.1895%;margin-top:-6.7px;left:3.4705%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai2-33" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.9673%;margin-top:-6.7px;left:4.3506%;width:45px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai2-34" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.9673%;margin-top:-6.7px;left:12.879%;width:45px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai2-35" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.9673%;margin-top:-6.7px;left:29.9359%;width:45px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai2-36" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.9673%;margin-top:-6.7px;left:55.5133%;width:45px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai2-37" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.9673%;margin-top:-6.7px;left:83.9313%;width:45px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai2-38" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.9673%;margin-top:-6.7px;left:41.3046%;width:45px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai2-39" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:42.9673%;margin-top:-6.7px;left:69.7223%;width:45px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai2-40" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:47.4266%;margin-top:-7.8px;left:48.4528%;width:51px;">
+                    <p class="g-pstyle2">Nepal</p>
+                </div>
+                <div id="g-ai2-41" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:48.9673%;margin-top:-6.7px;left:3.4705%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai2-42" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:51.0784%;margin-top:-6.7px;left:3.4705%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai2-43" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:53.1895%;margin-top:-6.7px;left:3.4705%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai2-44" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:55.3006%;margin-top:-6.7px;left:3.4705%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai2-45" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.3006%;margin-top:-6.7px;left:3.4705%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai2-46" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:59.0784%;margin-top:-6.7px;left:4.3506%;width:45px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai2-47" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:59.0784%;margin-top:-6.7px;left:12.879%;width:45px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai2-48" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:59.0784%;margin-top:-6.7px;left:29.9359%;width:45px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai2-49" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:59.0784%;margin-top:-6.7px;left:41.3046%;width:45px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai2-50" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:59.0784%;margin-top:-6.7px;left:55.5133%;width:45px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai2-51" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:59.0784%;margin-top:-6.7px;left:69.7223%;width:45px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai2-52" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:59.0784%;margin-top:-6.7px;left:83.9313%;width:45px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai2-53" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:64.9195%;margin-top:-7.3px;left:43.6099%;width:68px;">
+                    <p class="g-pstyle0">Sri Lanka</p>
+                </div>
+                <div id="g-ai2-54" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:66.5165%;margin-top:-6.6px;left:3.8058%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai2-55" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:68.5165%;margin-top:-6.6px;left:3.8058%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai2-56" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:70.6276%;margin-top:-6.6px;left:3.8058%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai2-57" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:72.6276%;margin-top:-6.6px;left:3.8058%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai2-58" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:74.7387%;margin-top:-6.6px;left:3.8058%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai2-59" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:76.5165%;margin-top:-6.6px;left:7.6614%;width:45px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai2-60" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:76.5165%;margin-top:-6.6px;left:16.1041%;width:45px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai2-61" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:76.5165%;margin-top:-6.6px;left:32.9895%;width:45px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai2-62" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:76.5165%;margin-top:-6.6px;left:58.3096%;width:45px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai2-63" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:76.5165%;margin-top:-6.6px;left:86.4413%;width:45px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai2-64" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:76.5165%;margin-top:-6.6px;left:44.2438%;width:45px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai2-65" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:76.5165%;margin-top:-6.6px;left:72.3755%;width:45px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai2-66" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:80.9195%;margin-top:-7.3px;left:43.6099%;width:67px;">
+                    <p class="g-pstyle0">Maldives</p>
+                </div>
+                <div id="g-ai2-67" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:82.5165%;margin-top:-6.6px;left:3.8058%;width:28px;">
+                    <p class="g-pstyle1">8</p>
+                </div>
+                <div id="g-ai2-68" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:84.5165%;margin-top:-6.6px;left:3.8058%;width:28px;">
+                    <p class="g-pstyle1">6</p>
+                </div>
+                <div id="g-ai2-69" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.6276%;margin-top:-6.6px;left:3.8058%;width:28px;">
+                    <p class="g-pstyle1">4</p>
+                </div>
+                <div id="g-ai2-70" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:88.7387%;margin-top:-6.6px;left:3.8058%;width:28px;">
+                    <p class="g-pstyle1">2</p>
+                </div>
+                <div id="g-ai2-71" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:90.7387%;margin-top:-6.6px;left:3.8058%;width:28px;">
+                    <p class="g-pstyle1">0</p>
+                </div>
+                <div id="g-ai2-72" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:92.5165%;margin-top:-6.6px;left:7.6614%;width:45px;">
+                    <p class="g-pstyle1">1992</p>
+                </div>
+                <div id="g-ai2-73" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:92.5165%;margin-top:-6.6px;left:16.1041%;width:45px;">
+                    <p class="g-pstyle1">1995</p>
+                </div>
+                <div id="g-ai2-74" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:92.5165%;margin-top:-6.6px;left:32.9895%;width:45px;">
+                    <p class="g-pstyle1">2001</p>
+                </div>
+                <div id="g-ai2-75" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:92.5165%;margin-top:-6.6px;left:44.2438%;width:45px;">
+                    <p class="g-pstyle1">2005</p>
+                </div>
+                <div id="g-ai2-76" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:92.5165%;margin-top:-6.6px;left:58.3096%;width:45px;">
+                    <p class="g-pstyle1">2010</p>
+                </div>
+                <div id="g-ai2-77" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:92.5165%;margin-top:-6.6px;left:72.3755%;width:45px;">
+                    <p class="g-pstyle1">2015</p>
+                </div>
+                <div id="g-ai2-78" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:92.5165%;margin-top:-6.6px;left:86.4413%;width:45px;">
+                    <p class="g-pstyle1">2020</p>
+                </div>
+                <div id="g-ai2-79" class="g-Layer_1 g-aiAbs" style="top:95.6667%;left:3.3907%;width:92.8125%;">
+                    <p class="g-pstyle3">Source: Analysis of data collected by the Committee to Protect Journalists</p>
+                </div>
+            </div>
+        
+        </div>
+
+    </div>
+
+</body>
+
+</html>
