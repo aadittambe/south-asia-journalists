@@ -183,12 +183,12 @@
                             // if anything oterh than the dot is clicked, take display away
                             if( !$(e.target).hasClass("leaflet-interactive") )
                             {   
-                                $('#info').css('display', 'none')
+                                $('#info').slideUp("slow")
                             }
                             });    
-	                		$('#info').css('display', 'block')
+	                		$('#info')
                             // what's their story
-	                				.html('<h2>'+ '<span> '+ feature.properties.fullName + "&apos;s </span> story" + '</h2>' + feature.properties.desc);
+	                				.html('<h2>'+ '<span> '+ feature.properties.fullName + "&apos;s </span> story" + '</h2>' + feature.properties.desc).slideDown("slow");
                             
 	                	});
 	                	layer.bindPopup('<strong>' + feature.properties.fullName + '</strong>' + '  was killed in '+feature.properties.location+' in '+feature.properties.year + '.');
