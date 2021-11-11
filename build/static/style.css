@@ -159,4 +159,7 @@ a:hover {
     #viz{
         /* display: none; */
     }
+    iframe{
+        min-height: 1000px;
+    }
 }
