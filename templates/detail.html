@@ -16,7 +16,7 @@
         <h4><strong>Press organization:</strong> {{ object.organizations}} </h4>
         <h4> What&apos;s <span>{{ object.fullName}}&apos;s</span> story?</h4>
             {{ object.desc}}
-        <a href="../"><h4 class="update">Go back</h4></a>
+        <a href="../#myTable"><h4 class="update">Go back</h4></a>
         
         <script type="text/javascript">
             var map = L.map('map').setView([{{ object.lat }}, {{ object.lon }}], 12);

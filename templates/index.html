@@ -10,6 +10,11 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>       
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+        
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
     </head>
     <body>
@@ -35,7 +40,8 @@
         
         <div id="info"></div>
         
-        <table border=1 cellpadding=7>
+        <table border=1 cellpadding=7 id="myTable">
+            <thead>
             <tr>
                 <th>Name</th>
                 <th>Year</th>
@@ -45,7 +51,10 @@
                 <th>Press organization</th>
                 <th>Location</th>
             </tr>
-        {% for obj in object_list %}
+            </thead>
+        
+            <tbody>
+                {% for obj in object_list %}
             <tr>
                 <td><a href="{{ obj.id }}/">{{ obj.fullName }}</a></td>
                 <td>{{ obj.year }}</td>
@@ -55,7 +64,9 @@
                 <td>{{ obj.organizations }}</td>
                 <td>{{ obj.city_country }}</td>
             </tr>
-        {% endfor %}
+            {% endfor %}
+            </tbody>
+        
         </table>
 
         <p class="update">Methodology and sources</p>
@@ -76,6 +87,12 @@
         <div class="footer">
             <p style="">Developed by Aadit Tambe &mdash; 2021</p>
           </div>
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                    $('#myTable').DataTable();
+                });
+        </script>
         <script type="text/javascript">
            $(document).ready(function() {	
             

@@ -45,6 +45,7 @@ span{
     color: #DA0037;
 }
 table {
+    padding-top: 20px;
     margin-top: 48px;
     border-collapse:collapse;
     border-width: 0;
@@ -59,8 +60,8 @@ tr, td, th {
     border-color: #dbdbdb;
 }
 tr:hover {
-    background-color: #444444;
-    color: #EFEFEF;
+    /* background-color: #444444; */
+    /* color: #EFEFEF; */
 }
 .update{
     font-weight: 600;
